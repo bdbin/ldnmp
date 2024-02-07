@@ -1,0 +1,72 @@
+version: "3"
+services:
+# --- deploy nginx ----
+  nginx:
+    container_name: nginx
+    image: nginx:1.25.3-alpine3.18
+    restart: always
+    ports:
+      - "8084:80"
+      - "8085:443"
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./apps/nginx/conf.d:/etc/nginx/conf.d:rw
+      - ./apps/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./apps/nginx/fastcgi.conf:/etc/nginx/fastcgi.conf:ro
+      - ./apps/nginx/fastcgi_params:/etc/nginx/fastcgi_params:ro
+      - ./apps/nginx/logs:/var/log/nginx:rw
+      - ./apps/nginx/ssl:/etc/nginx/ssl
+      - ./web:/usr/share/nginx/html
+    networks:
+      - bdbin
+# --- deploy php ----
+  php:
+    build:
+      context: ./apps/php
+      dockerfile: Dockerfile
+      args:
+        PHP_VERSION: php:8.3.2-fpm-alpine3.19
+        MIRRORS_REPO_URL: mirrors.aliyun.com
+        # Available PHP_EXTENSIONS
+        PHP_EXTENSIONS: amqp apcu ast bcmath bitset blackfire bz2 calendar csv dba decimal ds enchant ev event excimer exif ffi ftp gd geospatial gettext gmagick gmp gnupg http igbinary imap inotify intl ion json_post jsonpath ldap luasandbox lzf mailparse maxminddb mcrypt memcache memcached mongodb msgpack mysqli oauth oci8 odbc opcache openswoole opentelemetry pcntl pcov pdo_dblib pdo_firebird pdo_mysql pdo_oci pdo_odbc pdo_pgsql pgsql php_trie pkcs11 pq protobuf pspell raphf rdkafka redis relay seasclick seaslog shmop smbclient snappy snmp snuffleupagus soap sockets solr spx ssh2 stomp sync sysvmsg sysvsem sysvshm tideways tidy timezonedb uopz uploadprogress uuid uv vld xdebug xdiff xhprof xlswriter xmldiff xmlrpc xsl yac yaml zephir_parser zip zmq zstd 
+        TZ: Asia/Shanghai
+    container_name: php
+    image: bdbin/php:8.3.2-fpm-alpine3.19
+    restart: always
+    ports:
+      - 9000:9000
+    volumes:
+      - ./apps/php/etc/php.ini:/usr/local/etc/php/php.ini
+      - ./apps/php/etc/php-fpm.conf:/usr/local/etc/php-fpm.d/www.conf:rw
+      - ./apps/php/logs:/var/log/php
+      - ./web:/usr/share/nginx/html
+    networks:
+      - bdbin
+# --- deploy mysql ----
+  mysql:
+    restart: always
+    container_name: mysql
+    image: mysql:8.0.36-oracle
+    ports:
+      - '3307:3306'
+    environment:
+      - MYSQL_ROOT_PASSWORD=gYFMzPu85nWnYxebBGnxvf
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./apps/mysql/conf/my.cnf:/etc/my.cnf:ro
+      - ./apps/mysql/data:/var/lib/mysql
+      - ./apps/mysql/logs:/var/log/mysql
+    networks:
+      - bdbin
+  adminer:
+    image: adminer
+    restart: always
+    container_name: adminer
+    ports:
+      - 8086:8080
+    networks:
+      - bdbin
+networks:
+  bdbin:
+    driver: bridge
