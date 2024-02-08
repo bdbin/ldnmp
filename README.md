@@ -13,132 +13,132 @@ LDNMP（Linux Docker Nginx MySQL PHP）是一个轻量化、极简化、自动�
 
 +   支持主流 Linux 发行版本（基于 Debian / RedHat / macOS，包括国产操作系统）
 
-| 操作系统 | 架构 | 建议 Linux 内核 | 软件要求 | 建议最小化硬件配置 |
-| --- | --- | --- | --- | --- |
-| linux/amd64 | x86\_64 | \>= 4.0 | wget curl tar Docker | 1Core/1GB RAM/30G HDD |
-| linux/arm64 | aarch64 | \>= 4.0 | wget curl tar Docker | 1Core/1GB RAM/30G HDD |
+| 操作系统    | 架构    | 建议 Linux 内核 | 软件要求             | 建议最小化硬件配置    |
+| ----------- | ------- | --------------- | -------------------- | --------------------- |
+| linux/amd64 | x86\_64 | \>= 4.0         | wget curl tar Docker | 1Core/1GB RAM/30G HDD |
+| linux/arm64 | aarch64 | \>= 4.0         | wget curl tar Docker | 1Core/1GB RAM/30G HDD |
 
 ## LDNMP 支持的技术栈
 
-| 服务 | 版本 |
-| --- | --- |
-| Nginx | 1.25.3 |
-| MySQL | 8.0.36 |
-| PHP | 8.3.2 |
+| 服务    | 版本   |
+| ------- | ------ |
+| Nginx   | 1.25.3 |
+| MySQL   | 8.0.36 |
+| PHP     | 8.3.2  |
 | Adminer | latest |
 
 > 应用版本更新与官方保持同步。
 
 ## 已安装并支持的PHP扩展
 
-| Extension | PHP 8.3 |
-| --- | --- |
-| amqp | ✓ |
-| apcu | ✓ |
-| ast | ✓ |
-| bcmath | ✓ |
-| bitset | ✓ |
-| blackfire | ✓ |
-| bz2 | ✓ |
-| calendar | ✓ |
-| csv | ✓ |
-| dba | ✓ |
-| decimal | ✓ |
-| ds | ✓ |
-| enchant | ✓ |
-| ev | ✓ |
-| event | ✓ |
-| excimer | ✓ |
-| exif | ✓ |
-| ffi | ✓ |
-| ftp | ✓ |
-| gd | ✓ |
-| geospatial | ✓ |
-| gettext | ✓ |
-| gmagick | ✓ |
-| gmp | ✓ |
-| gnupg | ✓ |
-| http | ✓ |
-| igbinary | ✓ |
-| imap | ✓ |
-| inotify | ✓ |
-| intl | ✓ |
-| ion | ✓ |
-| json\_post | ✓ |
-| jsonpath | ✓ |
-| ldap | ✓ |
-| luasandbox | ✓ |
-| lzf | ✓ |
-| mailparse | ✓ |
-| maxminddb | ✓ |
-| mcrypt | ✓ |
-| memcache | ✓ |
-| memcached | ✓ |
-| mongodb | ✓ |
-| msgpack | ✓ |
-| mysqli | ✓ |
-| oauth | ✓ |
-| oci8 | ✓ |
-| odbc | ✓ |
-| opcache | ✓ |
-| openswoole | ✓ |
-| opentelemetry | ✓ |
-| pcntl | ✓ |
-| pcov | ✓ |
-| pdo\_dblib | ✓ |
-| pdo\_firebird | ✓ |
-| pdo\_mysql | ✓ |
-| pdo\_oci | ✓ |
-| pdo\_odbc | ✓ |
-| pdo\_pgsql | ✓ |
-| pgsql | ✓ |
-| php\_trie | ✓ |
-| pkcs11 | ✓ |
-| pq | ✓ |
-| protobuf | ✓ |
-| pspell | ✓ |
-| raphf | ✓ |
-| rdkafka | ✓ |
-| redis | ✓ |
-| relay | ✓ |
-| seasclick | ✓ |
-| seaslog | ✓ |
-| shmop | ✓ |
-| smbclient | ✓ |
-| snappy | ✓ |
-| snmp | ✓ |
-| snuffleupagus | ✓ |
-| soap | ✓ |
-| sockets | ✓ |
-| solr | ✓ |
-| spx | ✓ |
-| ssh2 | ✓ |
-| stomp | ✓ |
-| sync | ✓ |
-| sysvmsg | ✓ |
-| sysvsem | ✓ |
-| sysvshm | ✓ |
-| tideways | ✓ |
-| tidy | ✓ |
-| timezonedb | ✓ |
-| uopz | ✓ |
-| uploadprogress | ✓ |
-| uuid | ✓ |
-| uv | ✓ |
-| vld | ✓ |
-| xdebug | ✓ |
-| xdiff | ✓ |
-| xhprof | ✓ |
-| xlswriter | ✓ |
-| xmldiff | ✓ |
-| xmlrpc | ✓ |
-| xsl | ✓ |
-| yac | ✓ |
-| yaml | ✓ |
-| zephir\_parser | ✓ |
-| zip | ✓ |
-| zmq | ✓ |
-| zstd | ✓ |
+| Extension      | PHP 8.3 |
+| -------------- | ------- |
+| amqp           | ✓       |
+| apcu           | ✓       |
+| ast            | ✓       |
+| bcmath         | ✓       |
+| bitset         | ✓       |
+| blackfire      | ✓       |
+| bz2            | ✓       |
+| calendar       | ✓       |
+| csv            | ✓       |
+| dba            | ✓       |
+| decimal        | ✓       |
+| ds             | ✓       |
+| enchant        | ✓       |
+| ev             | ✓       |
+| event          | ✓       |
+| excimer        | ✓       |
+| exif           | ✓       |
+| ffi            | ✓       |
+| ftp            | ✓       |
+| gd             | ✓       |
+| geospatial     | ✓       |
+| gettext        | ✓       |
+| gmagick        | ✓       |
+| gmp            | ✓       |
+| gnupg          | ✓       |
+| http           | ✓       |
+| igbinary       | ✓       |
+| imap           | ✓       |
+| inotify        | ✓       |
+| intl           | ✓       |
+| ion            | ✓       |
+| json\_post     | ✓       |
+| jsonpath       | ✓       |
+| ldap           | ✓       |
+| luasandbox     | ✓       |
+| lzf            | ✓       |
+| mailparse      | ✓       |
+| maxminddb      | ✓       |
+| mcrypt         | ✓       |
+| memcache       | ✓       |
+| memcached      | ✓       |
+| mongodb        | ✓       |
+| msgpack        | ✓       |
+| mysqli         | ✓       |
+| oauth          | ✓       |
+| oci8           | ✓       |
+| odbc           | ✓       |
+| opcache        | ✓       |
+| openswoole     | ✓       |
+| opentelemetry  | ✓       |
+| pcntl          | ✓       |
+| pcov           | ✓       |
+| pdo\_dblib     | ✓       |
+| pdo\_firebird  | ✓       |
+| pdo\_mysql     | ✓       |
+| pdo\_oci       | ✓       |
+| pdo\_odbc      | ✓       |
+| pdo\_pgsql     | ✓       |
+| pgsql          | ✓       |
+| php\_trie      | ✓       |
+| pkcs11         | ✓       |
+| pq             | ✓       |
+| protobuf       | ✓       |
+| pspell         | ✓       |
+| raphf          | ✓       |
+| rdkafka        | ✓       |
+| redis          | ✓       |
+| relay          | ✓       |
+| seasclick      | ✓       |
+| seaslog        | ✓       |
+| shmop          | ✓       |
+| smbclient      | ✓       |
+| snappy         | ✓       |
+| snmp           | ✓       |
+| snuffleupagus  | ✓       |
+| soap           | ✓       |
+| sockets        | ✓       |
+| solr           | ✓       |
+| spx            | ✓       |
+| ssh2           | ✓       |
+| stomp          | ✓       |
+| sync           | ✓       |
+| sysvmsg        | ✓       |
+| sysvsem        | ✓       |
+| sysvshm        | ✓       |
+| tideways       | ✓       |
+| tidy           | ✓       |
+| timezonedb     | ✓       |
+| uopz           | ✓       |
+| uploadprogress | ✓       |
+| uuid           | ✓       |
+| uv             | ✓       |
+| vld            | ✓       |
+| xdebug         | ✓       |
+| xdiff          | ✓       |
+| xhprof         | ✓       |
+| xlswriter      | ✓       |
+| xmldiff        | ✓       |
+| xmlrpc         | ✓       |
+| xsl            | ✓       |
+| yac            | ✓       |
+| yaml           | ✓       |
+| zephir\_parser | ✓       |
+| zip            | ✓       |
+| zmq            | ✓       |
+| zstd           | ✓       |
 
 > 此扩展来自https://github.com/mlocati/docker-php-extension-installer 参考示例文件
 
@@ -158,55 +158,75 @@ LDNMP（Linux Docker Nginx MySQL PHP）是一个轻量化、极简化、自动�
 
 ## 管理
 
-1. 重启 Nginx
-`docker restart $(docker ps -a | grep renwole-nginx | awk '{print $1}')`
+重启 Nginx
+   
+```bash
+docker restart $(docker ps -a | grep renwole-nginx | awk '{print $1}')
+```
 
-2. 重启 MySQL
-`docker restart $(docker ps -a | grep renwole-mysql | awk '{print $1}')`
+重启 MySQL
 
-3. 重启 PHP
-`docker restart $(docker ps -a | grep renwole-php | awk '{print $1}')`
+```bash
+docker restart $(docker ps -a | grep renwole-mysql | awk '{print $1}')
+```
 
-4. 重启 Adminer
-`docker restart $(docker ps -a | grep renwole-adminer | awk '{print $1}')`
+重启 PHP
+
+```bash
+docker restart $(docker ps -a | grep renwole-php | awk '{print $1}')
+```
+
+重启 Adminer
+
+```bash
+docker restart $(docker ps -a | grep renwole-adminer | awk '{print $1}')
+```
+
+> 可选参数: docker <stop|start|restart> service name
 
 ## 默认端口
 
-| 服务 | 容器暴露端口 | 默认端口 |
-| --- | --- | --- |
-| Nginx | 8084（http）/8085（https） | 80/443 |
-| PHP | 9000 | 9000 |
-| MySQL | 3307 | 3306 |
-| Adminer | 8085 | 8080 |
+| 服务    | 容器暴露端口               | 默认端口 |
+| ------- | -------------------------- | -------- |
+| Nginx   | 8084（http）/8085（https） | 80/443   |
+| PHP     | 9000                       | 9000     |
+| MySQL   | 3307                       | 3306     |
+| Adminer | 8085                       | 8080     |
 
 > 可编辑 `docker-compose.yaml` 修改对应服务的端口
 
 ## 目录结构
 
-| 相对目录 | 描述 |
-| --- | --- |
-| ./apps/mysql/conf | MySQL配置文件所在路径 |
-| ./apps/mysql/data | MySQL数据存放目录 |
-| ./apps/mysql/logs | MySQL日志存放路径 |
-| ./apps/nginx | Nginx配置文件目录 |
-| ./apps/nginx/ssl | Nginx证书存放目录 |
-| ./apps/nginx/logs | Nginx日志存放目录 |
-| ./web | 网站存放目录 |
-| ./apps/php | PHP配置文件目录 |
-| ./apps/php/logs | PHP-FPM日志目录 |
-| ./apps/php/etc | php.ini php-fpm.conf 配置目录 |
+| 相对目录          | 描述                          |
+| ----------------- | ----------------------------- |
+| ./apps/mysql/conf | MySQL配置文件所在路径         |
+| ./apps/mysql/data | MySQL数据存放目录             |
+| ./apps/mysql/logs | MySQL日志存放路径             |
+| ./apps/nginx      | Nginx配置文件目录             |
+| ./apps/nginx/ssl  | Nginx证书存放目录             |
+| ./apps/nginx/logs | Nginx日志存放目录             |
+| ./web             | 网站存放目录                  |
+| ./apps/php        | PHP配置文件目录               |
+| ./apps/php/logs   | PHP-FPM日志目录               |
+| ./apps/php/etc    | php.ini php-fpm.conf 配置目录 |
 
 > 安装相对目录可编辑 `docker-compose.yaml` 修改
 
 ## 卸载
 
 1.  找到 docker-compose.yaml 文件所在目录，执行如下命令停止服务  
-    `docker-compose down`
+    ```bash
+    docker-compose down
+    ```
 	
 2.  在终端执行如下命令可删除所有数据  
-    `rm -rf apps docker-compose.yaml web`
+    ```bash
+    rm -rf apps docker-compose.yaml web
+    ```
 	
 3.  在终端执行如下命令删除 Docker 镜像  
-    `docker rmi $(docker images | grep 'php|nginx|mysql' | awk '{print $3}')`
+    ```bash
+    docker rmi $(docker images | grep 'php|nginx|mysql' | awk '{print $3}')
+    ```
 
 > 卸载删除意味着所有数据将不复存在且不可逆，请先备份。卸载删除意味着所有数据将不复存在且不可逆，请先备份。
