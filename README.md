@@ -156,7 +156,7 @@ LDNMP（Linux Docker Nginx MySQL PHP）是一个轻量化、极简化、自动�
 5.  安装完成后，执行如下命令可查看 MySQL 密码，账号默认：root  
     `cat docker-compose.yaml | grep MYSQL_ROOT_PASSWORD`
 
-# 管理
+## 管理
 
 1. 重启 Nginx
 `docker restart $(docker ps -a | grep renwole-nginx | awk '{print $1}')`
@@ -170,7 +170,7 @@ LDNMP（Linux Docker Nginx MySQL PHP）是一个轻量化、极简化、自动�
 4. 重启 Adminer
 `docker restart $(docker ps -a | grep renwole-adminer | awk '{print $1}')`
 
-# 默认端口
+## 默认端口
 
 | 服务 | 容器暴露端口 | 默认端口 |
 | --- | --- | --- |
@@ -181,7 +181,7 @@ LDNMP（Linux Docker Nginx MySQL PHP）是一个轻量化、极简化、自动�
 
 > 可编辑 `docker-compose.yaml` 修改对应服务的端口
 
-# 目录结构
+## 目录结构
 
 | 相对目录 | 描述 |
 | --- | --- |
@@ -198,7 +198,7 @@ LDNMP（Linux Docker Nginx MySQL PHP）是一个轻量化、极简化、自动�
 
 > 安装相对目录可编辑 `docker-compose.yaml` 修改
 
-# 卸载
+## 卸载
 
 1.  找到 docker-compose.yaml 文件所在目录，执行如下命令停止服务  
     `docker-compose down`
