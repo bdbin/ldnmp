@@ -209,6 +209,4 @@ LDNMP（Linux Docker Nginx MySQL PHP）是一个轻量化、极简化、自动�
 3.  在终端执行如下命令删除 Docker 镜像  
     `docker rmi $(docker images | grep 'php|nginx|mysql' | awk '{print $3}')`
 
-## 说明
-
 > 卸载删除意味着所有数据将不复存在且不可逆，请先备份。卸载删除意味着所有数据将不复存在且不可逆，请先备份。
