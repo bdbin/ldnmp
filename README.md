@@ -13,11 +13,10 @@ LDNMP（Linux Docker Nginx MySQL PHP）是一个轻量化、极简化、自动�
 
 +   支持主流 Linux 发行版本（基于 Debian / RedHat / macOS，包括国产操作系统）
 
-| 操作系统 | 架构 | 建议Linux 内核 | 软件要求 | 建议最小化硬件配置 |
+| 操作系统 | 架构 | 建议 Linux 内核 | 软件要求 | 建议最小化硬件配置 |
 | --- | --- | --- | --- | --- |
 | linux/amd64 | x86\_64 | \>= 4.0 | wget curl tar Docker | 1Core/1GB RAM/30G HDD |
 | linux/arm64 | aarch64 | \>= 4.0 | wget curl tar Docker | 1Core/1GB RAM/30G HDD |
-| linux/loong64 | loongarch64 | \== 4.19 | wget curl tar Docker | 1Core/1GB RAM/30G HDD |
 
 ## LDNMP 支持的技术栈
 
