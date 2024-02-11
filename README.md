@@ -97,7 +97,6 @@ LDNMP（Linux Docker Nginx MySQL PHP）是一个轻量化、极简化、自动�
 | pcntl          | ✓       |
 | pcov           | ✓       |
 | pdo\_dblib     | ✓       |
-| pdo\_firebird  | ✓       |
 | pdo\_mysql     | ✓       |
 | pdo\_oci       | ✓       |
 | pdo\_odbc      | ✓       |
@@ -138,7 +137,6 @@ LDNMP（Linux Docker Nginx MySQL PHP）是一个轻量化、极简化、自动�
 | uv             | ✓       |
 | vld            | ✓       |
 | xdebug         | ✓       |
-| xdiff          | ✓       |
 | xhprof         | ✓       |
 | xlswriter      | ✓       |
 | xmldiff        | ✓       |
