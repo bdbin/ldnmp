@@ -3,7 +3,7 @@ services:
 # --- deploy nginx ----
   nginx:
     container_name: nginx
-    image: nginx:1.25.3-alpine3.18
+    image: nginx:1.25.3-alpine
     restart: always
     ports:
       - "8084:80"
@@ -26,16 +26,16 @@ services:
       context: ./apps/php
       dockerfile: Dockerfile
       args:
-        PHP_VERSION: php:8.3.2-fpm-alpine3.19
-        MIRRORS_REPO_URL: mirrors.aliyun.com
+        PHP_VERSION: php:8.3.2-fpm-alpine
+        # MIRRORS_REPO_URL: mirrors.ustc.edu.cn
         # Available PHP_EXTENSIONS
-        PHP_EXTENSIONS: amqp apcu ast bcmath bitset blackfire bz2 calendar csv dba decimal ds enchant ev event excimer exif ffi ftp gd geospatial gettext gmagick gmp gnupg http igbinary imap inotify intl ion json_post jsonpath ldap luasandbox lzf mailparse maxminddb mcrypt memcache memcached mongodb msgpack mysqli oauth oci8 odbc opcache openswoole opentelemetry pcntl pcov pdo_dblib pdo_firebird pdo_mysql pdo_oci pdo_odbc pdo_pgsql pgsql php_trie pkcs11 pq protobuf pspell raphf rdkafka redis relay seasclick seaslog shmop smbclient snappy snmp snuffleupagus soap sockets solr spx ssh2 stomp sync sysvmsg sysvsem sysvshm tideways tidy timezonedb uopz uploadprogress uuid uv vld xdebug xdiff xhprof xlswriter xmldiff xmlrpc xsl yac yaml zephir_parser zip zmq zstd 
+        PHP_EXTENSIONS: amqp apcu ast bcmath bitset blackfire bz2 calendar csv dba decimal ds enchant ev event excimer exif ffi ftp gd geospatial gettext gmagick gmp gnupg http igbinary imap inotify intl ion json_post jsonpath ldap luasandbox lzf mailparse maxminddb mcrypt memcache memcached mongodb msgpack mysqli oauth oci8 odbc opcache openswoole opentelemetry pcntl pcov pdo_dblib pdo_mysql pdo_oci pdo_odbc pdo_pgsql pgsql php_trie pkcs11 pq protobuf pspell raphf rdkafka redis relay seasclick seaslog shmop smbclient snappy snmp snuffleupagus soap sockets solr spx ssh2 stomp sync sysvmsg sysvsem sysvshm tideways tidy timezonedb uopz uploadprogress uuid uv vld xdebug xhprof xlswriter xmldiff xmlrpc xsl yac yaml zephir_parser zip zmq zstd 
         TZ: Asia/Shanghai
       platforms:
         - "linux/amd64"
         - "linux/arm64"
     container_name: php
-    image: bdbin/php:8.3.2-fpm-alpine3.19
+    image: bdbin/php:8.3.2-fpm-alpine
     restart: always
     ports:
       - 9000:9000
@@ -50,7 +50,7 @@ services:
   mysql:
     restart: always
     container_name: mysql
-    image: mysql:8.0.36-oracle
+    image: mysql:8.3.0
     ports:
       - '3307:3306'
     environment:
