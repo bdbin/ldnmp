@@ -171,12 +171,12 @@ wget https://github.com/bdbin/ldnmp/archive/refs/heads/main.zip
 unzip main.zip
 ```
 
-1. 设置目录权限
+2. 设置目录权限
 ```bash
 chmod -R 777 ldnmp*
 ```
 
-1. 进入项目目录, 执行以下命令启动服务
+3. 进入项目目录, 执行以下命令启动服务
 ```bash
 docker-compose up -d
 ```
