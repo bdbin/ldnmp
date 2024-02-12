@@ -1,44 +1,51 @@
 
 
-LDNMP（Linux Docker Nginx MySQL PHP）是一个轻量化、极简化、自动化且100%开源的PHP集成环境安装脚本，以安装最新技术栈版本为基础，每个版本只更新最新的技术栈。LDNMP支持高度定制化，且代码透明、无臃肿冗余代码、无垃圾数据产出、安装成功后自动删除对应软件包，极少的占用磁盘空间。相对于控制面板，在安全性、CPU、内存、网络等资源上大大节流开支。
-
-- [先决条件](#先决条件)
-- [支持的操作系统](#支持的操作系统)
-- [LDNMP 支持的技术栈](#ldnmp-支持的技术栈)
-- [已安装并支持的PHP扩展](#已安装并支持的php扩展)
-- [安装](#安装)
-- [管理](#管理)
-- [默认端口](#默认端口)
-- [目录结构](#目录结构)
-- [卸载](#卸载)
+LDNMP（Linux Docker Nginx MySQL PHP）是一个轻量、极简化、自动化且100%开源的PHP集成环境安装脚本, 默认安装的PHP版本包含当前PHP所有扩展, 每个版本只更新最新的技术栈。LDNMP支持高度定制化, 方便开发者快速构建本地的PHP环境、且代码透明、无臃肿冗余代码、无垃圾数据产出、安装成功后自动删除对应软件包, 极少的占用磁盘空间。相对于控制面板，在安全性、CPU、内存、网络等资源上大大节流开支。
 
 
 ## 先决条件
 
-+   安装前先确保系统是干净的，没有安装过任何环境，如：Apache/Nginx/PHP/MySQL/MariaDB，否则会存在端口冲突。
++   安装前先确保系统是干净的, 没有安装过任何环境, 如: Apache/Nginx/PHP/MySQL/MariaDB, 否则会存在端口冲突。
 +   请自定安装 docker、docker-compose:
     +   docker 安装方法: [https://docs.docker.com/engine/install/](https://docs.docker.com/engine/install/)
     +   docker-compose 安装方法: [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
 
 ## 支持的操作系统
-
 +   支持主流 Linux 发行版本（基于 Debian / RedHat macOS 包括 OpenKylin 等国产操作系统）
 
-| 操作系统    | 架构    | 软件要求             | 建议最小化硬件配置    |
-| ----------- | ------- | -------------------- | --------------------- |
-| linux/amd64 | x86\_64 | wget curl tar docker docker-compose | 1Core/1GB RAM/30G HDD |
-| linux/arm64 | aarch64 | wget curl tar docker docker-compose | 1Core/1GB RAM/30G HDD |
+| 操作系统    | 架构    | 软件要求             | 
+| ----------- | ------- | -------------------- | 
+| linux/amd64 | x86\_64 | docker docker compose | 
+| linux/arm64 | aarch64 | docker docker compose | 
 
 ## LDNMP 支持的技术栈
 
 | 服务    | 版本   |
 | ------- | ------ |
-| Nginx   | 1.25.3 |
-| MySQL   | 8.3.0 |
-| PHP     | 8.3.2  |
+| Nginx   | 1.25.x |
+| MySQL   | 8.3.x |
+| PHP     | 8.3.x  |
 | Adminer | latest |
 
 > 应用版本更新与官方保持同步。
+
+## 目录结构
+
+| 相对目录          | 描述                          |
+| ----------------- | ----------------------------- |
+| ./apps/mysql/conf | MySQL配置文件所在路径         |
+| ./apps/mysql/data | MySQL数据存放目录             |
+| ./apps/mysql/logs | MySQL日志存放路径             |
+| ./apps/nginx      | Nginx配置文件目录             |
+| ./apps/nginx/ssl  | Nginx证书存放目录             |
+| ./apps/nginx/logs | Nginx日志存放目录             |
+| ./web             | 网站存放目录                  |
+| ./apps/php        | PHP配置文件目录               |
+| ./apps/php/logs   | PHP-FPM日志目录               |
+| ./apps/php/etc    | php.ini php-fpm.conf 配置目录 |
+
+> 安装相对目录可编辑 `docker-compose.yaml` 修改
+
 
 ## 已安装并支持的PHP扩展
 
@@ -149,77 +156,119 @@ LDNMP（Linux Docker Nginx MySQL PHP）是一个轻量化、极简化、自动�
 | zmq            | ✓       |
 | zstd           | ✓       |
 
-> 此扩展来自https://github.com/mlocati/docker-php-extension-installer 参考示例文件
+> 此扩展来自 https://github.com/mlocati/docker-php-extension-installer 参考示例文件
 
-## 安装
+## 快速开始
+启动过程: 拉取代码 - 拉取镜像 - 启动服务, 其中 PHP 镜像是基于官方 PHP 镜像默认安装了所有 PHP 扩展, 因此无需再安装 PHP 扩展, 开箱即用。
+
 1. clone项目
-`$ git clone https://github.com/bdbin/ldnmp.git`
+``` bash
+git clone https://github.com/bdbin/ldnmp.git
+```
+或
+```bash
+wget https://github.com/bdbin/ldnmp/archive/refs/heads/main.zip
+unzip main.zip
+```
 
-2. 进入项目目录，执行以下命令启动服务
-`$ docker-compose up`
+1. 设置目录权限
+```bash
+chmod -R 777 ldnmp*
+```
 
-3. 安装完成后，在浏览器中访问：http://localhost:8084 或 https://localhost:8085 (自签名HTTPS) 就能看到安装后的效果，PHP代码在文件./web/index.php
+1. 进入项目目录, 执行以下命令启动服务
+```bash
+docker-compose up -d
+```
 
-4. 可访问 http://localhost:8086 访问 Adminer 管理 MySQL 数据库
+或
 
-5.  安装完成后，执行如下命令可查看 MySQL 密码，账号默认：root  
-    `cat docker-compose.yaml | grep MYSQL_ROOT_PASSWORD`
+```bash
+docker compose up -d
+```
+
+4. 安装完成后，在浏览器中访问：http://localhost:8084 或 https://localhost:8085 (自签名HTTPS) 就能看到安装后的效果, PHP代码在文件./web/index.php
+
+5. 可访问 http://localhost:8086 访问 Adminer 管理 MySQL 数据库
+
+6.  安装完成后，执行如下命令可查看 MySQL 密码，账号默认：root  
+   
+```bash
+cat docker-compose.yaml | grep MYSQL_ROOT_PASSWORD
+```
+
+## 自定义安装
+1. 默认会自动安装 `docker-compose.yaml` 中所有的服务, 即: Nginx, MySQL, PHP, Adminer
+2. 只安装 Nginx
+```bash
+docker-compose up -d nginx
+```
+3. 只安装 PHP
+```bash
+docker-compose up -d php
+```
+4. 只安装 MySQL
+```bash
+docker-compose up -d mysql
+```
+
+# PHP 扩展
+1. 可根据需要编辑  `docker-compose.yaml`  找到 `PHP_EXTENSIONS` 默认是所有的 PHP 扩展, 根据需要删除或增加 `https://github.com/mlocati/docker-php-extension-installer` 中支持的 PHP 扩展, 多个扩展以空格分隔
+2. 编辑完成后, 执行如下命令开始构建
+```bash
+docker-compose build
+```
+或
+```bash
+docker compose build
+```
+3. 执行如下命令启动构建后的服务
+```bash
+docker-compose up -d
+```
+或
+```bash
+docker compose up -d
+```
 
 ## 管理
 
 重启 Nginx
    
 ```bash
-docker restart $(docker ps -a | grep renwole-nginx | awk '{print $1}')
+docker restart nginx
 ```
 
 重启 MySQL
 
 ```bash
-docker restart $(docker ps -a | grep renwole-mysql | awk '{print $1}')
+docker restart mysql
 ```
 
 重启 PHP
 
 ```bash
-docker restart $(docker ps -a | grep renwole-php | awk '{print $1}')
+docker restart php
 ```
 
 重启 Adminer
 
 ```bash
-docker restart $(docker ps -a | grep renwole-adminer | awk '{print $1}')
+docker restart adminer
 ```
 
-> 可选参数: docker <stop|start|restart> service name
+> 可选参数: docker <stop|start|restart> servicename
 
 ## 默认端口
 
 | 服务    | 容器暴露端口               | 默认端口 |
 | ------- | -------------------------- | -------- |
-| Nginx   | 8084（http）/8085（https） | 80/443   |
+| Nginx   | 8084（http）/ 8085（https） | 80/443   |
 | PHP     | 9000                       | 9000     |
 | MySQL   | 3307                       | 3306     |
 | Adminer | 8085                       | 8080     |
 
 > 可编辑 `docker-compose.yaml` 修改对应服务的端口
-
-## 目录结构
-
-| 相对目录          | 描述                          |
-| ----------------- | ----------------------------- |
-| ./apps/mysql/conf | MySQL配置文件所在路径         |
-| ./apps/mysql/data | MySQL数据存放目录             |
-| ./apps/mysql/logs | MySQL日志存放路径             |
-| ./apps/nginx      | Nginx配置文件目录             |
-| ./apps/nginx/ssl  | Nginx证书存放目录             |
-| ./apps/nginx/logs | Nginx日志存放目录             |
-| ./web             | 网站存放目录                  |
-| ./apps/php        | PHP配置文件目录               |
-| ./apps/php/logs   | PHP-FPM日志目录               |
-| ./apps/php/etc    | php.ini php-fpm.conf 配置目录 |
-
-> 安装相对目录可编辑 `docker-compose.yaml` 修改
 
 ## 卸载
 
@@ -238,4 +287,4 @@ docker restart $(docker ps -a | grep renwole-adminer | awk '{print $1}')
     docker rmi $(docker images | grep 'php|nginx|mysql' | awk '{print $3}')
     ```
 
-> 卸载删除意味着所有数据将不复存在且不可逆，请先备份。卸载删除意味着所有数据将不复存在且不可逆，请先备份。
+> 卸载删除意味着所有数据将不复存在且不可逆, 请先备份。卸载删除意味着所有数据将不复存在且不可逆, 请先备份。
