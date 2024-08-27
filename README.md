@@ -6,7 +6,7 @@ LDNMP（Linux Docker Nginx MySQL PHP）是一个轻量、极简化、自动化�
 ## 先决条件
 
 +   安装前先确保系统是干净的, 没有安装过任何环境, 如: Apache/Nginx/PHP/MySQL/MariaDB, 否则会存在端口冲突。
-+   请自定安装 docker、docker-compose:
++   请自行安装 docke 及 docker-compose:
     +   docker 安装方法: [https://docs.docker.com/engine/install/](https://docs.docker.com/engine/install/)
     +   docker-compose 安装方法: [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
 
@@ -22,8 +22,8 @@ LDNMP（Linux Docker Nginx MySQL PHP）是一个轻量、极简化、自动化�
 
 | 服务    | 版本   |
 | ------- | ------ |
-| Nginx   | 1.25.x |
-| MySQL   | 8.3.x |
+| Nginx   | 1.27.x |
+| MySQL   | 9.0.x |
 | PHP     | 8.3.x  |
 | Adminer | latest |
 
@@ -48,113 +48,156 @@ LDNMP（Linux Docker Nginx MySQL PHP）是一个轻量、极简化、自动化�
 
 
 ## 已安装并支持的PHP扩展
-
-| Extension      | PHP 8.3 |
-| -------------- | ------- |
-| amqp           | ✓       |
-| apcu           | ✓       |
-| ast            | ✓       |
-| bcmath         | ✓       |
-| bitset         | ✓       |
-| blackfire      | ✓       |
-| bz2            | ✓       |
-| calendar       | ✓       |
-| csv            | ✓       |
-| dba            | ✓       |
-| decimal        | ✓       |
-| ds             | ✓       |
-| enchant        | ✓       |
-| ev             | ✓       |
-| event          | ✓       |
-| excimer        | ✓       |
-| exif           | ✓       |
-| ffi            | ✓       |
-| ftp            | ✓       |
-| gd             | ✓       |
-| geospatial     | ✓       |
-| gettext        | ✓       |
-| gmagick        | ✓       |
-| gmp            | ✓       |
-| gnupg          | ✓       |
-| http           | ✓       |
-| igbinary       | ✓       |
-| imap           | ✓       |
-| inotify        | ✓       |
-| intl           | ✓       |
-| ion            | ✓       |
-| json\_post     | ✓       |
-| jsonpath       | ✓       |
-| ldap           | ✓       |
-| luasandbox     | ✓       |
-| lzf            | ✓       |
-| mailparse      | ✓       |
-| maxminddb      | ✓       |
-| mcrypt         | ✓       |
-| memcache       | ✓       |
-| memcached      | ✓       |
-| mongodb        | ✓       |
-| msgpack        | ✓       |
-| mysqli         | ✓       |
-| oauth          | ✓       |
-| oci8           | ✓       |
-| odbc           | ✓       |
-| opcache        | ✓       |
-| openswoole     | ✓       |
-| opentelemetry  | ✓       |
-| pcntl          | ✓       |
-| pcov           | ✓       |
-| pdo\_dblib     | ✓       |
-| pdo\_mysql     | ✓       |
-| pdo\_oci       | ✓       |
-| pdo\_odbc      | ✓       |
-| pdo\_pgsql     | ✓       |
-| pgsql          | ✓       |
-| php\_trie      | ✓       |
-| pkcs11         | ✓       |
-| pq             | ✓       |
-| protobuf       | ✓       |
-| pspell         | ✓       |
-| raphf          | ✓       |
-| rdkafka        | ✓       |
-| redis          | ✓       |
-| relay          | ✓       |
-| seasclick      | ✓       |
-| seaslog        | ✓       |
-| shmop          | ✓       |
-| smbclient      | ✓       |
-| snappy         | ✓       |
-| snmp           | ✓       |
-| snuffleupagus  | ✓       |
-| soap           | ✓       |
-| sockets        | ✓       |
-| solr           | ✓       |
-| spx            | ✓       |
-| ssh2           | ✓       |
-| stomp          | ✓       |
-| sync           | ✓       |
-| sysvmsg        | ✓       |
-| sysvsem        | ✓       |
-| sysvshm        | ✓       |
-| tideways       | ✓       |
-| tidy           | ✓       |
-| timezonedb     | ✓       |
-| uopz           | ✓       |
-| uploadprogress | ✓       |
-| uuid           | ✓       |
-| uv             | ✓       |
-| vld            | ✓       |
-| xdebug         | ✓       |
-| xhprof         | ✓       |
-| xlswriter      | ✓       |
-| xmldiff        | ✓       |
-| xmlrpc         | ✓       |
-| xsl            | ✓       |
-| yac            | ✓       |
-| yaml           | ✓       |
-| zephir\_parser | ✓       |
-| zip            | ✓       |
-| zmq            | ✓       |
-| zstd           | ✓       |
+| **Extension**        | **PHP 8.3** |
+|----------------------|-------------|
+| amqp                 | ✓           |
+| apcu                 | ✓           |
+| ast                  | ✓           |
+| bcmath               | ✓           |
+| bitset               | ✓           |
+| blackfire            | ✓           |
+| bz2                  | ✓           |
+| calendar             | ✓           |
+| Core                 | ✓           |
+| csv                  | ✓           |
+| ctype                | ✓           |
+| curl                 | ✓           |
+| date                 | ✓           |
+| dba                  | ✓           |
+| ddtrace              | ✓           |
+| decimal              | ✓           |
+| dom                  | ✓           |
+| ds                   | ✓           |
+| enchant              | ✓           |
+| ev                   | ✓           |
+| event                | ✓           |
+| excimer              | ✓           |
+| exif                 | ✓           |
+| FFI                  | ✓           |
+| fileinfo             | ✓           |
+| filter               | ✓           |
+| ftp                  | ✓           |
+| gd                   | ✓           |
+| gearman              | ✓           |
+| geos                 | ✓           |
+| geospatial           | ✓           |
+| gettext              | ✓           |
+| gmagick              | ✓           |
+| gmp                  | ✓           |
+| gnupg                | ✓           |
+| grpc                 | ✓           |
+| hash                 | ✓           |
+| http                 | ✓           |
+| iconv                | ✓           |
+| igbinary             | ✓           |
+| imap                 | ✓           |
+| inotify              | ✓           |
+| intl                 | ✓           |
+| ion                  | ✓           |
+| json                 | ✓           |
+| json_post            | ✓           |
+| jsonpath             | ✓           |
+| ldap                 | ✓           |
+| libsmbclient         | ✓           |
+| libxml               | ✓           |
+| luasandbox           | ✓           |
+| lzf                  | ✓           |
+| mailparse            | ✓           |
+| maxminddb            | ✓           |
+| mbstring             | ✓           |
+| mcrypt               | ✓           |
+| memcache             | ✓           |
+| memcached            | ✓           |
+| mongodb              | ✓           |
+| msgpack              | ✓           |
+| mysqli               | ✓           |
+| mysqlnd              | ✓           |
+| newrelic             | ✓           |
+| OAuth                | ✓           |
+| oci8                 | ✓           |
+| odbc                 | ✓           |
+| openssl              | ✓           |
+| parle                | ✓           |
+| pcntl                | ✓           |
+| pcov                 | ✓           |
+| pcre                 | ✓           |
+| PDO                  | ✓           |
+| pdo_dblib            | ✓           |
+| PDO_Firebird         | ✓           |
+| pdo_mysql            | ✓           |
+| PDO_OCI              | ✓           |
+| PDO_ODBC             | ✓           |
+| pdo_pgsql            | ✓           |
+| pdo_sqlite           | ✓           |
+| pdo_sqlsrv           | ✓           |
+| pgsql                | ✓           |
+| Phar                 | ✓           |
+| php_trie             | ✓           |
+| phpy                 | ✓           |
+| pkcs11               | ✓           |
+| posix                | ✓           |
+| pq                   | ✓           |
+| protobuf             | ✓           |
+| pspell               | ✓           |
+| random               | ✓           |
+| raphf                | ✓           |
+| rdkafka              | ✓           |
+| readline             | ✓           |
+| redis                | ✓           |
+| Reflection           | ✓           |
+| relay                | ✓           |
+| SeasClick            | ✓           |
+| SeasLog              | ✓           |
+| session              | ✓           |
+| shmop                | ✓           |
+| SimpleXML            | ✓           |
+| smbclient            | ✓           |
+| snappy               | ✓           |
+| snmp                 | ✓           |
+| snuffleupagus        | ✓           |
+| soap                 | ✓           |
+| sockets              | ✓           |
+| sodium               | ✓           |
+| solr                 | ✓           |
+| SourceGuardian       | ✓           |
+| SPL                  | ✓           |
+| SPX                  | ✓           |
+| sqlite3              | ✓           |
+| ssh2                 | ✓           |
+| standard             | ✓           |
+| Stomp                | ✓           |
+| swoole               | ✓           |
+| sync                 | ✓           |
+| sysvmsg              | ✓           |
+| sysvsem              | ✓           |
+| sysvshm              | ✓           |
+| tideways             | ✓           |
+| tidy                 | ✓           |
+| timezonedb           | ✓           |
+| tokenizer            | ✓           |
+| uploadprogress       | ✓           |
+| uuid                 | ✓           |
+| uv                   | ✓           |
+| vld                  | ✓           |
+| xdebug               | ✓           |
+| xdiff                | ✓           |
+| xhprof               | ✓           |
+| xlswriter            | ✓           |
+| xml                  | ✓           |
+| xmldiff              | ✓           |
+| xmlreader            | ✓           |
+| xmlrpc               | ✓           |
+| xmlwriter            | ✓           |
+| xsl                  | ✓           |
+| yac                  | ✓           |
+| yaml                 | ✓           |
+| yar                  | ✓           |
+| Zend OPcache         | ✓           |
+| zephir_parser        | ✓           |
+| zip                  | ✓           |
+| zlib                 | ✓           |
+| zmq                  | ✓           |
+| zstd                 | ✓           |
 
 > 此扩展来自 https://github.com/mlocati/docker-php-extension-installer 参考示例文件
 
@@ -266,7 +309,7 @@ docker restart adminer
 | Nginx   | 8084（http）/ 8085（https） | 80/443   |
 | PHP     | 9000                       | 9000     |
 | MySQL   | 3307                       | 3306     |
-| Adminer | 8085                       | 8080     |
+| Adminer | 8086                       | 8080     |
 
 > 可编辑 `docker-compose.yaml` 修改对应服务的端口
 
