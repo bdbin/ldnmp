@@ -15,17 +15,18 @@ LDNMP（Linux Docker Nginx MySQL PHP）是一个轻量、极简化、自动化�
 
 | 操作系统    | 架构    | 软件要求             | 
 | ----------- | ------- | -------------------- | 
-| linux/amd64 | x86\_64 | docker docker compose | 
-| linux/arm64 | aarch64 | docker docker compose | 
+| linux/amd64 | x86\_64 | docker docker-compose | 
+| linux/arm64 | aarch64 | docker docker-compose | 
 
 ## LDNMP 支持的技术栈
 
 | 服务    | 版本   |
 | ------- | ------ |
 | Nginx   | 1.27.x |
-| MySQL   | 9.0.x |
+| MySQL   | 9.0.x  |
 | PHP     | 8.3.x  |
 | Adminer | latest |
+| Redis   | 7.4.x  |
 
 > 应用版本更新与官方保持同步。
 
@@ -43,6 +44,8 @@ LDNMP（Linux Docker Nginx MySQL PHP）是一个轻量、极简化、自动化�
 | ./apps/php        | PHP配置文件目录               |
 | ./apps/php/logs   | PHP-FPM日志目录               |
 | ./apps/php/etc    | php.ini php-fpm.conf 配置目录 |
+| ./apps/redis/conf | Redis 配置文件所在目录         |
+| ./apps/redis/data | 数据存储目录                   |
 
 > 安装相对目录可编辑 `docker-compose.yaml` 修改
 
@@ -218,6 +221,9 @@ unzip main.zip
 ```bash
 chmod -R 777 ldnmp*
 ```
+```bash
+chmod 644 ldnmp*/apps/mysql/conf/my.cnf
+```
 
 3. 进入项目目录, 执行以下命令启动服务
 ```bash
@@ -240,8 +246,14 @@ docker compose up -d
 cat docker-compose.yaml | grep MYSQL_ROOT_PASSWORD
 ```
 
+7.  安装完成后，执行如下命令可查看 Redis 密码，账号默认：无
+   
+```bash
+cat ldnmp*/apps/redis/conf/redis.conf | grep requirepass
+```
+
 ## 自定义安装
-1. 默认会自动安装 `docker-compose.yaml` 中所有的服务, 即: Nginx, MySQL, PHP, Adminer
+1. 默认会自动安装 `docker-compose.yaml` 中所有的服务, 即: Nginx, MySQL, PHP, Adminer、Redis
 2. 只安装 Nginx
 ```bash
 docker-compose up -d nginx
@@ -253,6 +265,14 @@ docker-compose up -d php
 4. 只安装 MySQL
 ```bash
 docker-compose up -d mysql
+```
+5. 只安装 Redis
+```bash
+docker-compose up -d redis
+```
+6. 只安装 Nginx, MySQL, PHP, Adminer
+```bash
+docker-compose up -d nginx mysql php adminer
 ```
 
 # PHP 扩展
@@ -300,16 +320,23 @@ docker restart php
 docker restart adminer
 ```
 
+重启 Redis
+
+```bash
+docker restart redis
+```
+
 > 可选参数: docker <stop|start|restart> servicename
 
 ## 默认端口
 
-| 服务    | 容器暴露端口               | 默认端口 |
+| 服务     | 容器暴露端口                 | 默认端口 |
 | ------- | -------------------------- | -------- |
 | Nginx   | 8084（http）/ 8085（https） | 80/443   |
 | PHP     | 9000                       | 9000     |
 | MySQL   | 3307                       | 3306     |
 | Adminer | 8086                       | 8080     |
+| Redis   | 6379                       | 6379     |
 
 > 可编辑 `docker-compose.yaml` 修改对应服务的端口
 
@@ -327,7 +354,7 @@ docker restart adminer
 	
 3.  在终端执行如下命令删除 Docker 镜像  
     ```bash
-    docker rmi $(docker images | grep 'php|nginx|mysql' | awk '{print $3}')
+    docker rmi $(docker images | grep 'php|nginx|mysql|redis' | awk '{print $3}')
     ```
 
 > 卸载删除意味着所有数据将不复存在且不可逆, 请先备份。卸载删除意味着所有数据将不复存在且不可逆, 请先备份。

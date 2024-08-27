@@ -1,8 +1,8 @@
 services:
 # --- deploy nginx ----
   nginx:
-    container_name: nginx
     image: nginx:1.27.1-alpine
+    container_name: nginx
     restart: always
     ports:
       - "8084:80"
@@ -37,8 +37,8 @@ services:
       platforms:
         - "linux/amd64"
         - "linux/arm64"
-    container_name: php
     image: bdbin/php:8.3.10-fpm-alpine
+    container_name: php
     restart: always
     ports:
       - 9000:9000
@@ -51,9 +51,9 @@ services:
       - bdbin
 # --- deploy mysql ----
   mysql:
-    restart: always
-    container_name: mysql
     image: mysql:9.0.1
+    container_name: mysql
+    restart: always
     ports:
       - '3307:3306'
     environment:
@@ -65,12 +65,28 @@ services:
       - ./apps/mysql/logs:/var/log/mysql
     networks:
       - bdbin
+# --- deploy adminer ---
   adminer:
     image: adminer
-    restart: always
     container_name: adminer
+    restart: always
     ports:
       - 8086:8080
+    networks:
+      - bdbin
+# --- deploy redis ---
+  redis:
+    image: redis:7.4.0
+    container_name: redis
+    restart: always
+    ports:
+      - "6379:6379"
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./apps/redis/conf/redis.conf:/etc/redis.conf:ro
+      - ./apps/redis/data:/data/:rw
+    entrypoint: ["redis-server", "/etc/redis.conf"]
     networks:
       - bdbin
 networks:
