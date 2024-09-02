@@ -25,7 +25,7 @@ services:
       args:
         PHP_EXTENSIONS: amqp apcu ast bcmath bitset blackfire bz2 calendar csv dba ddtrace decimal ds enchant ev event excimer exif ffi ftp gd gearman geos geospatial gettext gmagick gmp gnupg grpc http igbinary imap inotify intl ion json_post jsonpath ldap luasandbox lzf mailparse maxminddb mcrypt memcache memcached mongodb msgpack mysqli newrelic oauth oci8 odbc opcache parle pcntl pcov pdo_dblib pdo_firebird pdo_mysql pdo_oci pdo_odbc pdo_pgsql pdo_sqlsrv pgsql php_trie phpy pkcs11 pq protobuf pspell raphf rdkafka redis relay seasclick seaslog shmop smbclient snappy snmp snuffleupagus soap sockets solr sourceguardian spx ssh2 stomp swoole sync sysvmsg sysvsem sysvshm tideways tidy timezonedb uploadprogress uuid uv vld xdebug xdiff xhprof xlswriter xmldiff xmlrpc xsl yac yaml yar zephir_parser zip zmq zstd
       dockerfile_inline: |
-        FROM php:8.3.10-fpm-alpine
+        FROM php:8.3.11-fpm-alpine
         RUN curl -sSLf -o /usr/local/bin/install-php-extensions https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions \ 
         && chmod +x /usr/local/bin/install-php-extensions \
         && apk update \
@@ -37,7 +37,7 @@ services:
       platforms:
         - "linux/amd64"
         - "linux/arm64"
-    image: bdbin/php:8.3.10-fpm-alpine
+    image: bdbin/php:8.3.11-fpm-alpine
     container_name: php
     restart: always
     ports:
