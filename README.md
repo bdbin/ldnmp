@@ -122,9 +122,9 @@ LDNMP（Linux Docker Nginx MySQL PHP）是一个轻量、极简化、自动化�
 |                       oci8                       |   ✓   |   ✓   |
 |                       odbc                       |   ✓   |   ✓   |
 |                      opcache                      |   ✓   |   ✓   |
-|                    opencensus                    |        |   ✓   |
-|                    openswoole                    |        |   ✓   |
-|                   opentelemetry                   |   ✓   |   ✓   |
+|                    opencensus                    |        |      |
+|                    openswoole                    |        |      |
+|                   opentelemetry                   |      |      |
 |  parallel[*](#special-requirements-for-parallel)  |   ✓   |   ✓   |
 |     parle[*](#special-requirements-for-parle)     |   ✓   |   ✓   |
 |                       pcntl                       |   ✓   |   ✓   |
