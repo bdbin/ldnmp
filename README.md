@@ -23,7 +23,7 @@ LDNMP（Linux Docker Nginx MySQL PHP）是一个轻量、极简化、自动化�
 | 服务    | 版本   |
 | ------- | ------ |
 | Nginx   | 1.27.x |
-| MySQL   | 9.0.x  |
+| MySQL   | 9.0.x｜9.1.x  |
 | PHP     | 8.3.x｜8.4.x  |
 | Adminer | latest |
 | Redis   | 7.4.x  |
@@ -49,160 +49,207 @@ LDNMP（Linux Docker Nginx MySQL PHP）是一个轻量、极简化、自动化�
 
 > 安装相对目录可编辑 `docker-compose.yaml` 修改
 
-
 ## 已安装并支持的PHP扩展
-| **Extension**        | **PHP 8.3** |
-|----------------------|-------------|
-| amqp                 | ✓           |
-| apcu                 | ✓           |
-| ast                  | ✓           |
-| bcmath               | ✓           |
-| bitset               | ✓           |
-| blackfire            | ✓           |
-| bz2                  | ✓           |
-| calendar             | ✓           |
-| Core                 | ✓           |
-| csv                  | ✓           |
-| ctype                | ✓           |
-| curl                 | ✓           |
-| date                 | ✓           |
-| dba                  | ✓           |
-| ddtrace              | ✓           |
-| decimal              | ✓           |
-| dom                  | ✓           |
-| ds                   | ✓           |
-| enchant              | ✓           |
-| ev                   | ✓           |
-| event                | ✓           |
-| excimer              | ✓           |
-| exif                 | ✓           |
-| FFI                  | ✓           |
-| fileinfo             | ✓           |
-| filter               | ✓           |
-| ftp                  | ✓           |
-| gd                   | ✓           |
-| gearman              | ✓           |
-| geos                 | ✓           |
-| geospatial           | ✓           |
-| gettext              | ✓           |
-| gmagick              | ✓           |
-| gmp                  | ✓           |
-| gnupg                | ✓           |
-| grpc                 | ✓           |
-| hash                 | ✓           |
-| http                 | ✓           |
-| iconv                | ✓           |
-| igbinary             | ✓           |
-| imap                 | ✓           |
-| inotify              | ✓           |
-| intl                 | ✓           |
-| ion                  | ✓           |
-| json                 | ✓           |
-| json_post            | ✓           |
-| jsonpath             | ✓           |
-| ldap                 | ✓           |
-| libsmbclient         | ✓           |
-| libxml               | ✓           |
-| luasandbox           | ✓           |
-| lzf                  | ✓           |
-| mailparse            | ✓           |
-| maxminddb            | ✓           |
-| mbstring             | ✓           |
-| mcrypt               | ✓           |
-| memcache             | ✓           |
-| memcached            | ✓           |
-| mongodb              | ✓           |
-| msgpack              | ✓           |
-| mysqli               | ✓           |
-| mysqlnd              | ✓           |
-| newrelic             | ✓           |
-| OAuth                | ✓           |
-| oci8                 | ✓           |
-| odbc                 | ✓           |
-| openssl              | ✓           |
-| parle                | ✓           |
-| pcntl                | ✓           |
-| pcov                 | ✓           |
-| pcre                 | ✓           |
-| PDO                  | ✓           |
-| pdo_dblib            | ✓           |
-| PDO_Firebird         | ✓           |
-| pdo_mysql            | ✓           |
-| PDO_OCI              | ✓           |
-| PDO_ODBC             | ✓           |
-| pdo_pgsql            | ✓           |
-| pdo_sqlite           | ✓           |
-| pdo_sqlsrv           | ✓           |
-| pgsql                | ✓           |
-| Phar                 | ✓           |
-| php_trie             | ✓           |
-| phpy                 | ✓           |
-| pkcs11               | ✓           |
-| posix                | ✓           |
-| pq                   | ✓           |
-| protobuf             | ✓           |
-| pspell               | ✓           |
-| random               | ✓           |
-| raphf                | ✓           |
-| rdkafka              | ✓           |
-| readline             | ✓           |
-| redis                | ✓           |
-| Reflection           | ✓           |
-| relay                | ✓           |
-| SeasClick            | ✓           |
-| SeasLog              | ✓           |
-| session              | ✓           |
-| shmop                | ✓           |
-| SimpleXML            | ✓           |
-| smbclient            | ✓           |
-| snappy               | ✓           |
-| snmp                 | ✓           |
-| snuffleupagus        | ✓           |
-| soap                 | ✓           |
-| sockets              | ✓           |
-| sodium               | ✓           |
-| solr                 | ✓           |
-| SourceGuardian       | ✓           |
-| SPL                  | ✓           |
-| SPX                  | ✓           |
-| sqlite3              | ✓           |
-| ssh2                 | ✓           |
-| standard             | ✓           |
-| Stomp                | ✓           |
-| swoole               | ✓           |
-| sync                 | ✓           |
-| sysvmsg              | ✓           |
-| sysvsem              | ✓           |
-| sysvshm              | ✓           |
-| tideways             | ✓           |
-| tidy                 | ✓           |
-| timezonedb           | ✓           |
-| tokenizer            | ✓           |
-| uploadprogress       | ✓           |
-| uuid                 | ✓           |
-| uv                   | ✓           |
-| vld                  | ✓           |
-| xdebug               | ✓           |
-| xdiff                | ✓           |
-| xhprof               | ✓           |
-| xlswriter            | ✓           |
-| xml                  | ✓           |
-| xmldiff              | ✓           |
-| xmlreader            | ✓           |
-| xmlrpc               | ✓           |
-| xmlwriter            | ✓           |
-| xsl                  | ✓           |
-| yac                  | ✓           |
-| yaml                 | ✓           |
-| yar                  | ✓           |
-| Zend OPcache         | ✓           |
-| zephir_parser        | ✓           |
-| zip                  | ✓           |
-| zlib                 | ✓           |
-| zmq                  | ✓           |
-| zstd                 | ✓           |
+|                     Extension                     | PHP 8.4 | PHP 8.3 |
+| :-------------------------------------------------: | :-------: | :-------: |
+|                       amqp                       |   ✓   |   ✓   |
+|                       apcu                       |   ✓   |   ✓   |
+|                      apcu_bc                      |        |        |
+|                        ast                        |   ✓   |   ✓   |
+|                      bcmath                      |   ✓   |   ✓   |
+|                      bitset                      |   ✓   |   ✓   |
+|                     blackfire                     |        |   ✓   |
+|                      brotli                      |   ✓   |   ✓   |
+|                        bz2                        |   ✓   |   ✓   |
+|                     calendar                     |   ✓   |   ✓   |
+| cassandra[*](#special-requirements-for-cassandra) |      |      |
+|                       cmark                       |        |        |
+|                        csv                        |   ✓   |   ✓   |
+|                        dba                        |   ✓   |   ✓   |
+|   ddtrace[*](#special-requirements-for-ddtrace)   |   ✓   |   ✓   |
+|                      decimal                      |   ✓   |   ✓   |
+|                        ds                        |   ✓   |   ✓   |
+| ecma_intl[*](#special-requirements-for-ecma_intl) |        |   ✓   |
+|                      enchant                      |   ✓   |   ✓   |
+|                        ev                        |   ✓   |   ✓   |
+|                       event                       |   ✓   |   ✓   |
+|                      excimer                      |   ✓   |   ✓   |
+|                       exif                       |   ✓   |   ✓   |
+|                        ffi                        |   ✓   |   ✓   |
+|                        ftp                        |   ✓   |   ✓   |
+|                        gd                        |   ✓   |   ✓   |
+|                      gearman                      |        |   ✓   |
+|                       geoip                       |        |        |
+|      geos[*](#special-requirements-for-geos)      |   ✓   |   ✓   |
+|                    geospatial                    |   ✓   |   ✓   |
+|                      gettext                      |   ✓   |   ✓   |
+|                      gmagick                      |   ✓   |   ✓   |
+|                        gmp                        |   ✓   |   ✓   |
+|                       gnupg                       |   ✓   |   ✓   |
+|                       grpc                       |   ✓   |   ✓   |
+|                       http                       |   ✓   |   ✓   |
+|                     igbinary                     |   ✓   |   ✓   |
+|                      imagick                      |      |      |
+|                       imap                       |   ✓   |   ✓   |
+|                      inotify                      |   ✓   |   ✓   |
+|                     interbase                     |        |        |
+|                       intl                       |   ✓   |   ✓   |
+|                        ion                        |   ✓   |   ✓   |
+|                  ioncube_loader                  |        |   ✓   |
+|                       jsmin                       |        |        |
+|                     json_post                     |   ✓   |   ✓   |
+|                     jsonpath                     |   ✓   |   ✓   |
+|                       ldap                       |   ✓   |   ✓   |
+|                    luasandbox                    |   ✓   |   ✓   |
+|       lz4[*](#special-requirements-for-lz4)       |   ✓   |   ✓   |
+|                        lzf                        |   ✓   |   ✓   |
+|                     mailparse                     |   ✓   |   ✓   |
+|                     maxminddb                     |   ✓   |   ✓   |
+|                      mcrypt                      |        |   ✓   |
+|                       md4c                       |   ✓   |   ✓   |
+|                     memcache                     |   ✓   |   ✓   |
+|                     memcached                     |   ✓   |   ✓   |
+|   memprof[*](#special-requirements-for-memprof)   |   ✓   |   ✓   |
+|                       mongo                       |        |        |
+|                      mongodb                      |   ✓   |   ✓   |
+|                     mosquitto                     |        |        |
+|                      msgpack                      |   ✓   |   ✓   |
+|                       mssql                       |        |        |
+|                       mysql                       |        |        |
+|                      mysqli                      |   ✓   |   ✓   |
+|                     newrelic                     |        |   ✓   |
+|                       oauth                       |   ✓   |   ✓   |
+|                       oci8                       |   ✓   |   ✓   |
+|                       odbc                       |   ✓   |   ✓   |
+|                      opcache                      |   ✓   |   ✓   |
+|                    opencensus                    |        |   ✓   |
+|                    openswoole                    |        |   ✓   |
+|                   opentelemetry                   |   ✓   |   ✓   |
+|  parallel[*](#special-requirements-for-parallel)  |   ✓   |   ✓   |
+|     parle[*](#special-requirements-for-parle)     |   ✓   |   ✓   |
+|                       pcntl                       |   ✓   |   ✓   |
+|                       pcov                       |   ✓   |   ✓   |
+|                     pdo_dblib                     |   ✓   |   ✓   |
+|                   pdo_firebird                   |   ✓   |   ✓   |
+|                     pdo_mysql                     |   ✓   |   ✓   |
+|                      pdo_oci                      |   ✓   |   ✓   |
+|                     pdo_odbc                     |   ✓   |   ✓   |
+|                     pdo_pgsql                     |   ✓   |   ✓   |
+|                    pdo_sqlsrv                    |   ✓   |   ✓   |
+|                       pgsql                       |   ✓   |   ✓   |
+|                      phalcon                      |        |   ✓   |
+|                     php_trie                     |   ✓   |   ✓   |
+|      phpy[*](#special-requirements-for-phpy)      |   ✓   |   ✓   |
+|                      pkcs11                      |   ✓   |   ✓   |
+|                        pq                        |   ✓   |   ✓   |
+|                      propro                      |        |        |
+|                     protobuf                     |   ✓   |   ✓   |
+|                      pspell                      |   ✓   |   ✓   |
+|                        psr                        |   ✓   |   ✓   |
+|  pthreads[*](#special-requirements-for-pthreads)  |        |        |
+|                       raphf                       |   ✓   |   ✓   |
+|                      rdkafka                      |   ✓   |   ✓   |
+|                      recode                      |        |        |
+|                       redis                       |   ✓   |   ✓   |
+|                       relay                       |   ✓   |   ✓   |
+|     saxon[*](#special-requirements-for-saxon)     |   ✓   |   ✓   |
+|                     seasclick                     |   ✓   |   ✓   |
+|                      seaslog                      |        |   ✓   |
+|                       shmop                       |   ✓   |   ✓   |
+|  simdjson[*](#special-requirements-for-simdjson)  |   ✓   |   ✓   |
+|                     smbclient                     |   ✓   |   ✓   |
+|                      snappy                      |   ✓   |   ✓   |
+|                       snmp                       |   ✓   |   ✓   |
+|                   snuffleupagus                   |   ✓   |   ✓   |
+|                       soap                       |   ✓   |   ✓   |
+|                      sockets                      |   ✓   |   ✓   |
+|    sodium[*](#special-requirements-for-sodium)    |        |        |
+|                       solr                       |        |   ✓   |
+|                  sourceguardian                  |        |   ✓   |
+|                        spx                        |   ✓   |   ✓   |
+|    sqlsrv[*](#special-requirements-for-sqlsrv)    |   ✓   |   ✓   |
+|                       ssh2                       |   ✓   |   ✓   |
+|                       stomp                       |   ✓   |   ✓   |
+|                      swoole                      |   ✓   |   ✓   |
+|                     sybase_ct                     |        |        |
+|                       sync                       |   ✓   |   ✓   |
+|                      sysvmsg                      |   ✓   |   ✓   |
+|                      sysvsem                      |   ✓   |   ✓   |
+|                      sysvshm                      |   ✓   |   ✓   |
+|                      tensor                      |        |        |
+|                     tideways                     |   ✓   |   ✓   |
+|                       tidy                       |   ✓   |   ✓   |
+|                    timezonedb                    |   ✓   |   ✓   |
+|                       uopz                       |        |   ✓   |
+|                  uploadprogress                  |   ✓   |   ✓   |
+|                       uuid                       |   ✓   |   ✓   |
+|                        uv                        |   ✓   |   ✓   |
+|      vips[*](#special-requirements-for-vips)      |   ✓   |   ✓   |
+|                        vld                        |        |   ✓   |
+|                       wddx                       |        |        |
+| wikidiff2[*](#special-requirements-for-wikidiff2) |   ✓   |   ✓   |
+|                      xdebug                      |   ✓   |   ✓   |
+|                       xdiff                       |   ✓   |   ✓   |
+|                      xhprof                      |   ✓   |   ✓   |
+|                     xlswriter                     |   ✓   |   ✓   |
+|                      xmldiff                      |   ✓   |   ✓   |
+|                      xmlrpc                      |   ✓   |   ✓   |
+|     xpass[*](#special-requirements-for-xpass)     |   ✓   |   ✓   |
+|                        xsl                        |   ✓   |   ✓   |
+|                        yac                        |   ✓   |   ✓   |
+|                       yaml                       |   ✓   |   ✓   |
+|                        yar                        |   ✓   |   ✓   |
+|                   zephir_parser                   |   ✓   |   ✓   |
+|                        zip                        |   ✓   |   ✓   |
+|                        zmq                        |   ✓   |   ✓   |
+|                     zookeeper                     |        |        |
+|                       zstd                       |   ✓   |   ✓   |
+
 
 > 此扩展来自 https://github.com/mlocati/docker-php-extension-installer 参考示例文件
+
+PS: the pre-installed PHP extensions are excluded from this list.
+You can list them with the following command (change `php:7.2-cli` to reflect the PHP version you are interested in):
+
+```
+$ docker run --rm php:8.4.2-fpm-alpine  php -m
+[PHP Modules]
+Core
+ctype
+curl
+date
+dom
+fileinfo
+filter
+hash
+iconv
+json
+libxml
+mbstring
+mysqlnd
+openssl
+pcre
+PDO
+pdo_sqlite
+Phar
+posix
+random
+readline
+Reflection
+session
+SimpleXML
+sodium
+SPL
+sqlite3
+standard
+tokenizer
+xml
+xmlreader
+xmlwriter
+zlib
+
+[Zend Modules]
+```
 
 ## 快速开始
 启动过程: 拉取代码 - 拉取镜像 - 启动服务, 其中 PHP 镜像是基于官方 PHP 镜像默认安装了所有 PHP 扩展, 因此无需再安装 PHP 扩展, 开箱即用。
