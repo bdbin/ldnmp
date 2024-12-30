@@ -209,7 +209,7 @@ LDNMP（Linux Docker Nginx MySQL PHP）是一个轻量、极简化、自动化�
 > 此扩展来自 https://github.com/mlocati/docker-php-extension-installer 参考示例文件
 
 PS: the pre-installed PHP extensions are excluded from this list.
-You can list them with the following command (change `php:7.2-cli` to reflect the PHP version you are interested in):
+You can list them with the following command (change `php:8.4.2-fpm-alpine` to reflect the PHP version you are interested in):
 
 ```
 $ docker run --rm php:8.4.2-fpm-alpine  php -m
