@@ -2,7 +2,7 @@ services:
 
 # --- deploy nginx ----
   nginx:
-    image: nginx:1.27.3-alpine
+    image: nginx:1.27.4-alpine
     container_name: nginx
     restart: always
     ports:
@@ -43,7 +43,8 @@ services:
       platforms:
         - "linux/amd64"
         - "linux/arm64"
-    image: bdbin/php:8.4.3-fpm-alpine
+    image: bdbin/php:8.4.4-fpm-alpine
+    # image: bdbin/php:8.3.17-fpm-alpine
     container_name: php
     restart: always
     ports:
