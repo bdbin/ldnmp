@@ -1,26 +1,26 @@
+## What is LDNMP?
+
+LDNMP (Linux Docker Nginx MySQL PHP) is a lightweight, minimalist, automated, and 100% open-source PHP integrated environment installation script. By default, it installs PHP versions with all available extensions, and each version is updated with the latest technology stack only. LDNMP supports a high level of customization, enabling developers to quickly build local PHP environments with transparent code, no bloat or redundant code, no junk data generation, and automatic deletion of installation packages upon successful setup—resulting in minimal disk space usage. Compared to control panels, it significantly reduces costs in terms of security, CPU, memory, and network resources.
 
 
-LDNMP（Linux Docker Nginx MySQL PHP）是一个轻量、极简化、自动化且100%开源的PHP集成环境安装脚本, 默认安装的PHP版本包含当前PHP所有扩展, 每个版本只更新最新的技术栈。LDNMP支持高度定制化, 方便开发者快速构建本地的PHP环境、且代码透明、无臃肿冗余代码、无垃圾数据产出、安装成功后自动删除对应软件包, 极少的占用磁盘空间。相对于控制面板，在安全性、CPU、内存、网络等资源上大大节流开支。
+## Deployment prerequisites
 
++   Before installation, make sure the system is clean and does not have any existing environments installed, such as Apache/Nginx/PHP/MySQL/MariaDB, to avoid potential port conflicts.
++   Please install Docker and Docker Compose manually:
+    +   Docker installation: [https://docs.docker.com/engine/install/](https://docs.docker.com/engine/install/)
+    +   Docker Compose installation: [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
 
-## 先决条件
+## Operating system
++   Supports major Linux distributions (based on Debian / RedHat), macOS, and includes domestic operating systems such as OpenKylin.
 
-+   安装前先确保系统是干净的, 没有安装过任何环境, 如: Apache/Nginx/PHP/MySQL/MariaDB, 否则会存在端口冲突。
-+   请自行安装 docke 及 docker-compose:
-    +   docker 安装方法: [https://docs.docker.com/engine/install/](https://docs.docker.com/engine/install/)
-    +   docker-compose 安装方法: [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
-
-## 支持的操作系统
-+   支持主流 Linux 发行版本（基于 Debian / RedHat macOS 包括 OpenKylin 等国产操作系统）
-
-| 操作系统    | 架构    | 软件要求             | 
+|  Systems   | CPU    | Software  | 
 | ----------- | ------- | -------------------- | 
-| linux/amd64 | x86\_64 | docker docker-compose | 
+| linux/amd64 | x86_64 | docker docker-compose | 
 | linux/arm64 | aarch64 | docker docker-compose | 
 
-## LDNMP 支持的技术栈
+## LDNMP Supported Technology Stack
 
-| 服务    | 版本   |
+| Service    | Version   |
 | ------- | ------ |
 | Nginx   | 1.27.x |
 | MySQL   | 9.2.x  |
@@ -28,28 +28,28 @@ LDNMP（Linux Docker Nginx MySQL PHP）是一个轻量、极简化、自动化�
 | Adminer | latest |
 | Redis   | 7.4.x  |
 
-> 应用版本更新与官方保持同步。
+> The application version is updated to stay in sync with the official releases.
 
-## 目录结构
+## Directory Structure
 
-| 相对目录          | 描述                          |
+| Relative Directory| Description                   |
 | ----------------- | ----------------------------- |
-| ./apps/mysql/conf | MySQL配置文件所在路径         |
-| ./apps/mysql/data | MySQL数据存放目录             |
-| ./apps/mysql/logs | MySQL日志存放路径             |
-| ./apps/nginx      | Nginx配置文件目录             |
-| ./apps/nginx/ssl  | Nginx证书存放目录             |
-| ./apps/nginx/logs | Nginx日志存放目录             |
-| ./web             | 网站存放目录                  |
-| ./apps/php        | PHP配置文件目录               |
-| ./apps/php/logs   | PHP-FPM日志目录               |
-| ./apps/php/etc    | php.ini php-fpm.conf 配置目录 |
-| ./apps/redis/conf | Redis 配置文件所在目录         |
-| ./apps/redis/data | 数据存储目录                   |
+| ./apps/mysql/conf | MySQL configuration file directory         |
+| ./apps/mysql/data | MySQL data storage directory             |
+| ./apps/mysql/logs | MySQL logs directory             |
+| ./apps/nginx      | Nginx configuration file directory             |
+| ./apps/nginx/ssl  | Nginx SSL certificate storage directory             |
+| ./apps/nginx/logs | Nginx logs directory             |
+| ./web             | Website storage directory               |
+| ./apps/php        | PHP configuration file directory             |
+| ./apps/php/logs   | PHP-FPM logs directory        |
+| ./apps/php/etc    | php.ini and php-fpm.conf configuration files |
+| ./apps/redis/conf | Redis configuration file directory         |
+| ./apps/redis/data | Redis data storage directory                 |
 
-> 安装相对目录可编辑 `docker-compose.yaml` 修改
+> Edit the docker-compose.yaml file in the installation directory.
 
-## 已安装并支持的PHP扩展
+## Installed and Supported PHP Extensions
 |                     Extension                     | PHP 8.4 | PHP 8.3 |
 | :-------------------------------------------------: | :-------: | :-------: |
 |                       amqp                       |   ✓   |   ✓   |
@@ -206,7 +206,7 @@ LDNMP（Linux Docker Nginx MySQL PHP）是一个轻量、极简化、自动化�
 |                       zstd                       |   ✓   |   ✓   |
 
 
-> 此扩展来自 https://github.com/mlocati/docker-php-extension-installer 参考示例文件
+> This extension is from https://github.com/mlocati/docker-php-extension-installer, see the example file for reference
 
 PS: the pre-installed PHP extensions are excluded from this list.
 You can list them with the following command (change `php:8.4.2-fpm-alpine` to reflect the PHP version you are interested in):
@@ -251,20 +251,20 @@ zlib
 [Zend Modules]
 ```
 
-## 快速开始
-启动过程: 拉取代码 - 拉取镜像 - 启动服务, 其中 PHP 镜像是基于官方 PHP 镜像默认安装了所有 PHP 扩展, 因此无需再安装 PHP 扩展, 开箱即用。
+## Quick Start
+Startup process: Pull the code - Pull the image - Start the service. The PHP image is based on the official PHP image and comes with all PHP extensions pre-installed, so there is no need to install PHP extensions. It’s ready to use out of the box.
 
-1. clone项目
+1. Clone the project
 ``` bash
 git clone https://github.com/bdbin/ldnmp.git
 ```
-或
+or
 ```bash
 wget https://github.com/bdbin/ldnmp/archive/refs/heads/main.zip
 unzip main.zip
 ```
 
-2. 设置目录权限
+2. Set Directory Permissions
 ```bash
 chmod -R 777 ldnmp*
 ```
@@ -272,112 +272,111 @@ chmod -R 777 ldnmp*
 chmod 644 ldnmp*/apps/mysql/conf/my.cnf
 ```
 
-3. 进入项目目录, 执行以下命令启动服务
+3. Start the service
 ```bash
 docker-compose up -d
 ```
 
-或
+or
 
 ```bash
 docker compose up -d
 ```
 
-4. 安装完成后，在浏览器中访问：http://localhost:8084 或 https://localhost:8085 (自签名HTTPS) 就能看到安装后的效果, PHP代码在文件./web/index.php
+4. After installation is complete, visit http://localhost:8084 or https://localhost:8085 (self-signed HTTPS) in your browser to see the result. The PHP code is located in the file ./web/index.php.
 
-5. 可访问 http://localhost:8086 访问 Adminer 管理 MySQL 数据库
+5. You can access Adminer to manage the MySQL database at http://localhost:8086.
 
-6.  安装完成后，执行如下命令可查看 MySQL 密码，账号默认：root  
-   
+6.  After installation is complete, execute the following command to view the MySQL password. The default username is: root.
 ```bash
 cat docker-compose.yaml | grep MYSQL_ROOT_PASSWORD
 ```
 
-7.  安装完成后，执行如下命令可查看 Redis 密码，账号默认：无
+7.  After installation is complete, execute the following command to view the Redis password. There is no default username.
    
 ```bash
 cat ldnmp*/apps/redis/conf/redis.conf | grep requirepass
 ```
 
-## 自定义安装
-1. 默认会自动安装 `docker-compose.yaml` 中所有的服务, 即: Nginx, MySQL, PHP, Adminer、Redis
-2. 只安装 Nginx
+## Custom Installation
+1. By default, all services listed in docker-compose.yaml will be installed automatically, including: Nginx, MySQL, PHP, Adminer, and Redis.
+2. To install only Nginx.
 ```bash
 docker-compose up -d nginx
 ```
-3. 只安装 PHP
+3. To install only PHP.
 ```bash
 docker-compose up -d php
 ```
-4. 只安装 MySQL
+4. To install only MySQL.
 ```bash
 docker-compose up -d mysql
 ```
-5. 只安装 Redis
+5. To install only Redis.
 ```bash
 docker-compose up -d redis
 ```
-6. 只安装 Nginx, MySQL, PHP, Adminer
+6. To install Nginx, MySQL, PHP, Adminer
 ```bash
 docker-compose up -d nginx mysql php adminer
 ```
 
-# PHP 扩展
-1. 可根据需要编辑  `docker-compose.yaml`  找到 `PHP_EXTENSIONS` 默认是所有的 PHP 扩展, 根据需要删除或增加 `https://github.com/mlocati/docker-php-extension-installer` 中支持的 PHP 扩展, 多个扩展以空格分隔
-2. 编辑完成后, 执行如下命令开始构建
+# Adding support to a new PHP extension
+1. You can edit the docker-compose.yaml file as needed. Locate the PHP_EXTENSIONS field — by default, it includes all available PHP extensions. You can remove or add extensions based on your needs, using the ones supported by https://github.com/mlocati/docker-php-extension-installer. Multiple extensions should be separated by spaces.
+2. Start Building
 ```bash
 docker-compose build
 ```
-或
+or
 ```bash
 docker compose build
 ```
-3. 执行如下命令启动构建后的服务
+3. Start the service
 ```bash
 docker-compose up -d
 ```
-或
+or
 ```bash
 docker compose up -d
 ```
 
-## 管理
+## Manage services
 
-重启 Nginx
+Restart Nginx
    
 ```bash
 docker restart nginx
 ```
 
-重启 MySQL
+Restart MySQL
 
 ```bash
 docker restart mysql
 ```
 
-重启 PHP
+Restart PHP
 
 ```bash
 docker restart php
 ```
 
-重启 Adminer
+Restart Adminer
 
 ```bash
 docker restart adminer
 ```
 
-重启 Redis
+Restart Redis
 
 ```bash
 docker restart redis
 ```
 
-> 可选参数: docker <stop|start|restart> servicename
+> Optional Parameters: docker <stop|start|restart> servicename
 
-## 默认端口
+## Default Port
 
-| 服务     | 容器暴露端口                 | 默认端口 |
+| Service     | Exposed Ports of the Container                 | Default Port |
 | ------- | -------------------------- | -------- |
 | Nginx   | 8084（http）/ 8085（https） | 80/443   |
 | PHP     | 9000                       | 9000     |
@@ -385,23 +384,23 @@ docker restart redis
 | Adminer | 8086                       | 8080     |
 | Redis   | 6379                       | 6379     |
 
-> 可编辑 `docker-compose.yaml` 修改对应服务的端口
+> You can edit the docker-compose.yaml file to modify the ports for the corresponding services.
 
-## 卸载
+## Uninstall
 
-1.  找到 docker-compose.yaml 文件所在目录，执行如下命令停止服务  
+1.  Stop All Services
     ```bash
     docker-compose down
     ```
 	
-2.  在终端执行如下命令可删除所有数据  
+2.  Delete All Service Data
     ```bash
     rm -rf apps docker-compose.yaml web
     ```
 	
-3.  在终端执行如下命令删除 Docker 镜像  
+3.  Delete Docker Image
     ```bash
     docker rmi $(docker images | grep 'php|nginx|mysql|redis' | awk '{print $3}')
     ```
 
-> 卸载删除意味着所有数据将不复存在且不可逆, 请先备份。卸载删除意味着所有数据将不复存在且不可逆, 请先备份。
+> Uninstalling and deleting means all data will be permanently lost and irreversible. Proceed with caution.
