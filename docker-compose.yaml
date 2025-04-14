@@ -1,3 +1,9 @@
+#
+# Author: https://github.com/bdbin/ldnmp
+# Source: https://github.com/bdbin/ldnmp
+#
+# License: Apache-2.0 - see https://github.com/bdbin/ldnmp/blob/main/LICENSE.txt
+
 services:
 
 # --- deploy nginx ----
@@ -39,7 +45,7 @@ services:
         && cp "/usr/share/zoneinfo/Asia/Shanghai" /etc/localtime \
         && echo "Asia/Shanghai" > /etc/timezone
         ARG PHP_EXTENSIONS
-        RUN for i in $${PHP_EXTENSIONS}; do echo "LDNMP install $$i"; install-php-extensions $$i; done
+        RUN for i in $${PHP_EXTENSIONS}; do echo "https://github.com/bdbin/ldnmp install $$i"; install-php-extensions $$i; done
       platforms:
         - "linux/amd64"
         - "linux/arm64"
