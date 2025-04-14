@@ -20,15 +20,14 @@ LDNMP (Linux Docker Nginx MySQL PHP) is a lightweight, minimalist, automated, an
 | Fedora | ✓ | ✓ | 
 | RHEL   | ✓ | ✓ | 
 | Ubuntu | ✓ | ✓ | 
-| SUSE Linux Enterprise Server | ✓ | ✓ | 
+| SUSE   | ✓ | ✓ | 
 | macOS  | ✓ | ✓ | 
 | Rocky Linux  | ✓ | ✓ | 
 | Oracle Linux | ✓ | ✓ | 
 | Alma Linux   | ✓ | ✓ | 
 | openKylin    | ✓ | ✓ | 
-| Oracle Linux | ✓ | ✓ | 
-| Oracle Linux | ✓ | ✓ | 
-| Oracle Linux | ✓ | ✓ | 
+| Binaries     | ✓ | ✓ | 
+| openEuler    | ✓ | ✓ | 
 
 > This does not mean that LDNMP only supports these distributions. Essentially, LDNMP should be able to run well on any certified Docker environment.
 
