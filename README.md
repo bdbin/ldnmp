@@ -10,13 +10,27 @@ LDNMP (Linux Docker Nginx MySQL PHP) is a lightweight, minimalist, automated, an
     +   Docker installation: [https://docs.docker.com/engine/install/](https://docs.docker.com/engine/install/)
     +   Docker Compose installation: [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
 
-## Operating system
+## Supported platforms
 +   Supports major Linux distributions (based on Debian / RedHat), macOS, and includes domestic operating systems such as OpenKylin.
 
-|  Systems   | CPU    | Software  | 
+|  Platform   | x86_64 / amd64    | arm64 / aarch64  | 
 | ----------- | ------- | -------------------- | 
-| linux/amd64 | x86_64 | docker docker-compose | 
-| linux/arm64 | aarch64 | docker docker-compose | 
+| CentOS | ✓ | ✓ | 
+| Debian | ✓ | ✓ | 
+| Fedora | ✓ | ✓ | 
+| RHEL   | ✓ | ✓ | 
+| Ubuntu | ✓ | ✓ | 
+| SUSE Linux Enterprise Server | ✓ | ✓ | 
+| macOS  | ✓ | ✓ | 
+| Rocky Linux  | ✓ | ✓ | 
+| Oracle Linux | ✓ | ✓ | 
+| Alma Linux   | ✓ | ✓ | 
+| openKylin    | ✓ | ✓ | 
+| Oracle Linux | ✓ | ✓ | 
+| Oracle Linux | ✓ | ✓ | 
+| Oracle Linux | ✓ | ✓ | 
+
+> This does not mean that LDNMP only supports these distributions. Essentially, LDNMP should be able to run well on any certified Docker environment.
 
 ## LDNMP Supported Technology Stack
 
