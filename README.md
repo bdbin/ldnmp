@@ -271,27 +271,14 @@ Startup process: Pull the code - Pull the image - Start the service. The PHP ima
 ``` bash
 git clone https://github.com/bdbin/ldnmp.git
 ```
-or
-```bash
-wget https://github.com/bdbin/ldnmp/archive/refs/heads/main.zip
-unzip main.zip
-```
 
 2. Set Directory Permissions
 ```bash
 chmod -R 777 ldnmp*
-```
-```bash
 chmod 644 ldnmp*/apps/mysql/conf/my.cnf
 ```
 
 3. Start the service
-```bash
-docker-compose up -d
-```
-
-or
-
 ```bash
 docker compose up -d
 ```
@@ -315,40 +302,32 @@ cat ldnmp*/apps/redis/conf/redis.conf | grep requirepass
 1. By default, all services listed in docker-compose.yaml will be installed automatically, including: Nginx, MySQL, PHP, Adminer, and Redis.
 2. To install only Nginx.
 ```bash
-docker-compose up -d nginx
+docker compose up -d nginx
 ```
 3. To install only PHP.
 ```bash
-docker-compose up -d php
+docker compose up -d php
 ```
 4. To install only MySQL.
 ```bash
-docker-compose up -d mysql
+docker compose up -d mysql
 ```
 5. To install only Redis.
 ```bash
-docker-compose up -d redis
+docker compose up -d redis
 ```
 6. To install Nginx, MySQL, PHP, Adminer
 ```bash
-docker-compose up -d nginx mysql php adminer
+docker compose up -d nginx mysql php adminer
 ```
 
 # Adding support to a new PHP extension
 1. You can edit the docker-compose.yaml file as needed. Locate the PHP_EXTENSIONS field — by default, it includes all available PHP extensions. You can remove or add extensions based on your needs, using the ones supported by https://github.com/mlocati/docker-php-extension-installer. Multiple extensions should be separated by spaces.
 2. Start Building
 ```bash
-docker-compose build
-```
-or
-```bash
 docker compose build
 ```
 3. Start the service
-```bash
-docker-compose up -d
-```
-or
 ```bash
 docker compose up -d
 ```
