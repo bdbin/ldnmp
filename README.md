@@ -36,10 +36,10 @@ LDNMP (Linux Docker Nginx MySQL PHP) is a lightweight, minimalist, automated, an
 | Service    | Version   |
 | ------- | ------ |
 | Nginx   | 1.27.x |
-| MySQL   | 9.2.x  |
-| PHP     | 8.3.x｜8.4.x  |
+| MySQL   | 9.3.x  |
+| PHP     | 8.4.x  |
 | Adminer | latest |
-| Redis   | 7.4.x  |
+| Redis   | 8.0.x  |
 
 > The application version is updated to stay in sync with the official releases.
 
