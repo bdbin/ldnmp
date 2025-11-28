@@ -8,7 +8,7 @@ services:
 
 # --- deploy nginx ----
   nginx:
-    image: nginx:1.29.0-alpine
+    image: nginx:1.29.3-alpine
     container_name: nginx
     restart: always
     ports:
@@ -31,12 +31,9 @@ services:
     build:
       context: .
       args:
-        # for php 8.4.x
-        PHP_EXTENSIONS: amqp apcu ast bcmath bitset brotli bz2 calendar csv dba ddtrace decimal ds enchant ev event excimer exif ffi ftp gd geos geospatial gettext gmagick gmp gnupg grpc http igbinary imap inotify intl ion json_post jsonpath ldap luasandbox lzf mailparse maxminddb md4c memcache memcached memprof mongodb msgpack mysqli oauth oci8 odbc opcache opentelemetry parallel parle pcntl pcov pdo_dblib pdo_firebird pdo_mysql pdo_oci pdo_odbc pdo_pgsql pdo_sqlsrv pgsql php_trie phpy pkcs11 pq protobuf pspell psr raphf rdkafka redis relay saxon seasclick shmop simdjson smbclient snappy snmp snuffleupagus soap sockets spx sqlsrv ssh2 stomp swoole sync sysvmsg sysvsem sysvshm tideways tidy timezonedb uploadprogress uuid uv vips wikidiff2 xdebug xdiff xhprof xlswriter xmldiff xmlrpc xpass xsl yac yaml yar zephir_parser zip zmq zstd
-        # for php 8.3.x
-        # PHP_EXTENSIONS: amqp apcu ast bcmath bitset blackfire bz2 calendar csv dba ddtrace decimal ds enchant ev event excimer exif ffi ftp gd gearman geos geospatial gettext gmagick gmp gnupg grpc http igbinary imap inotify intl ion json_post jsonpath ldap luasandbox lzf mailparse maxminddb mcrypt memcache memcached mongodb msgpack mysqli newrelic oauth oci8 odbc opcache parle pcntl pcov pdo_dblib pdo_firebird pdo_mysql pdo_oci pdo_odbc pdo_pgsql pdo_sqlsrv pgsql php_trie phpy pkcs11 pq protobuf pspell raphf rdkafka redis relay seasclick seaslog shmop smbclient snappy snmp snuffleupagus soap sockets solr sourceguardian spx ssh2 stomp swoole sync sysvmsg sysvsem sysvshm tideways tidy timezonedb uploadprogress uuid uv vld xdebug xdiff xhprof xlswriter xmldiff xmlrpc xsl yac yaml yar zephir_parser zip zmq zstd
+        PHP_EXTENSIONS: 
       dockerfile_inline: |
-        FROM php:8.4.11-fpm-alpine
+        FROM php:8.5.0-fpm-alpine
         LABEL maintainer="LDNMP Docker Maintainers <https://github.com/bdbin/ldnmp>"
         RUN curl -sSLf -o /usr/local/bin/install-php-extensions https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions \ 
         && chmod +x /usr/local/bin/install-php-extensions \
@@ -45,12 +42,22 @@ services:
         && cp "/usr/share/zoneinfo/Asia/Shanghai" /etc/localtime \
         && echo "Asia/Shanghai" > /etc/timezone
         ARG PHP_EXTENSIONS
-        RUN for i in $${PHP_EXTENSIONS}; do echo "https://github.com/bdbin/ldnmp install $$i"; IPE_PROCESSOR_COUNT=2 install-php-extensions $$i; done
+        RUN set -eux; \
+            if [ -z $${PHP_EXTENSIONS} ]; then \
+               for i in $(curl --sSL https://raw.githubusercontent.com/mlocati/docker-php-extension-installer/refs/heads/master/data/supported-extensions | grep $(php -v | awk 'NR==1 {print $2}' | cut -d. -f1,2) | awk '{print $1}'); do \
+                   echo "https://github.com/bdbin/ldnmp install $$i"; \
+                   IPE_PROCESSOR_COUNT=2 install-php-extensions $$i; \
+               done \
+            else \
+               for i in $${PHP_EXTENSIONS}; do \
+                   echo "https://github.com/bdbin/ldnmp install $$i"; \
+                   IPE_PROCESSOR_COUNT=2 install-php-extensions $$i; \
+               done \
+            fi; \
       platforms:
         - "linux/amd64"
         - "linux/arm64"
-    image: bdbin/php:8.4.10-fpm-alpine
-    # image: bdbin/php:8.3.24-fpm-alpine
+    image: bdbin/php:8.5.0-fpm-alpine
     container_name: php
     restart: always
     ports:
@@ -65,7 +72,7 @@ services:
 
 # --- deploy mysql ----
   mysql:
-    image: mysql:9.4.0
+    image: mysql:9.5.0
     container_name: mysql
     restart: always
     ports:
@@ -92,7 +99,7 @@ services:
 
 # --- deploy redis ---
   redis:
-    image: redis:8.2.0
+    image: redis:8.4.0
     container_name: redis
     restart: always
     ports:
