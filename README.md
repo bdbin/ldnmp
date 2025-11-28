@@ -63,161 +63,154 @@ LDNMP (Linux Docker Nginx MySQL PHP) is a lightweight, minimalist, automated, an
 > Edit the docker-compose.yaml file in the installation directory.
 
 ## Installed and Supported PHP Extensions
-|                     Extension                     | PHP 8.4 | PHP 8.3 |
-| :-------------------------------------------------: | :-------: | :-------: |
-|                       amqp                       |   ✓   |   ✓   |
-|                       apcu                       |   ✓   |   ✓   |
-|                      apcu_bc                      |        |        |
-|                        ast                        |   ✓   |   ✓   |
-|                      bcmath                      |   ✓   |   ✓   |
-|                      bitset                      |   ✓   |   ✓   |
-|                     blackfire                     |        |   ✓   |
-|                      brotli                      |   ✓   |   ✓   |
-|                        bz2                        |   ✓   |   ✓   |
-|                     calendar                     |   ✓   |   ✓   |
-| cassandra[*](#special-requirements-for-cassandra) |      |      |
-|                       cmark                       |        |        |
-|                        csv                        |   ✓   |   ✓   |
-|                        dba                        |   ✓   |   ✓   |
-|   ddtrace[*](#special-requirements-for-ddtrace)   |   ✓   |   ✓   |
-|                      decimal                      |   ✓   |   ✓   |
-|                        ds                        |   ✓   |   ✓   |
-| ecma_intl[*](#special-requirements-for-ecma_intl) |        |   ✓   |
-|                      enchant                      |   ✓   |   ✓   |
-|                        ev                        |   ✓   |   ✓   |
-|                       event                       |   ✓   |   ✓   |
-|                      excimer                      |   ✓   |   ✓   |
-|                       exif                       |   ✓   |   ✓   |
-|                        ffi                        |   ✓   |   ✓   |
-|                        ftp                        |   ✓   |   ✓   |
-|                        gd                        |   ✓   |   ✓   |
-|                      gearman                      |        |   ✓   |
-|                       geoip                       |        |        |
-|      geos[*](#special-requirements-for-geos)      |   ✓   |   ✓   |
-|                    geospatial                    |   ✓   |   ✓   |
-|                      gettext                      |   ✓   |   ✓   |
-|                      gmagick                      |   ✓   |   ✓   |
-|                        gmp                        |   ✓   |   ✓   |
-|                       gnupg                       |   ✓   |   ✓   |
-|                       grpc                       |   ✓   |   ✓   |
-|                       http                       |   ✓   |   ✓   |
-|                     igbinary                     |   ✓   |   ✓   |
-|                      imagick                      |      |      |
-|                       imap                       |   ✓   |   ✓   |
-|                      inotify                      |   ✓   |   ✓   |
-|                     interbase                     |        |        |
-|                       intl                       |   ✓   |   ✓   |
-|                        ion                        |   ✓   |   ✓   |
-|                  ioncube_loader                  |        |   ✓   |
-|                       jsmin                       |        |        |
-|                     json_post                     |   ✓   |   ✓   |
-|                     jsonpath                     |   ✓   |   ✓   |
-|                       ldap                       |   ✓   |   ✓   |
-|                    luasandbox                    |   ✓   |   ✓   |
-|       lz4[*](#special-requirements-for-lz4)       |   ✓   |   ✓   |
-|                        lzf                        |   ✓   |   ✓   |
-|                     mailparse                     |   ✓   |   ✓   |
-|                     maxminddb                     |   ✓   |   ✓   |
-|                      mcrypt                      |        |   ✓   |
-|                       md4c                       |   ✓   |   ✓   |
-|                     memcache                     |   ✓   |   ✓   |
-|                     memcached                     |   ✓   |   ✓   |
-|   memprof[*](#special-requirements-for-memprof)   |   ✓   |   ✓   |
-|                       mongo                       |        |        |
-|                      mongodb                      |   ✓   |   ✓   |
-|                     mosquitto                     |        |        |
-|                      msgpack                      |   ✓   |   ✓   |
-|                       mssql                       |        |        |
-|                       mysql                       |        |        |
-|                      mysqli                      |   ✓   |   ✓   |
-|                     newrelic                     |        |   ✓   |
-|                       oauth                       |   ✓   |   ✓   |
-|                       oci8                       |   ✓   |   ✓   |
-|                       odbc                       |   ✓   |   ✓   |
-|                      opcache                      |   ✓   |   ✓   |
-|                    opencensus                    |        |      |
-|                    openswoole                    |        |      |
-|                   opentelemetry                   |      |      |
-|  parallel[*](#special-requirements-for-parallel)  |   ✓   |   ✓   |
-|     parle[*](#special-requirements-for-parle)     |   ✓   |   ✓   |
-|                       pcntl                       |   ✓   |   ✓   |
-|                       pcov                       |   ✓   |   ✓   |
-|                     pdo_dblib                     |   ✓   |   ✓   |
-|                   pdo_firebird                   |   ✓   |   ✓   |
-|                     pdo_mysql                     |   ✓   |   ✓   |
-|                      pdo_oci                      |   ✓   |   ✓   |
-|                     pdo_odbc                     |   ✓   |   ✓   |
-|                     pdo_pgsql                     |   ✓   |   ✓   |
-|                    pdo_sqlsrv                    |   ✓   |   ✓   |
-|                       pgsql                       |   ✓   |   ✓   |
-|                      phalcon                      |        |   ✓   |
-|                     php_trie                     |   ✓   |   ✓   |
-|      phpy[*](#special-requirements-for-phpy)      |   ✓   |   ✓   |
-|                      pkcs11                      |   ✓   |   ✓   |
-|                        pq                        |   ✓   |   ✓   |
-|                      propro                      |        |        |
-|                     protobuf                     |   ✓   |   ✓   |
-|                      pspell                      |   ✓   |   ✓   |
-|                        psr                        |   ✓   |   ✓   |
-|  pthreads[*](#special-requirements-for-pthreads)  |        |        |
-|                       raphf                       |   ✓   |   ✓   |
-|                      rdkafka                      |   ✓   |   ✓   |
-|                      recode                      |        |        |
-|                       redis                       |   ✓   |   ✓   |
-|                       relay                       |   ✓   |   ✓   |
-|     saxon[*](#special-requirements-for-saxon)     |   ✓   |   ✓   |
-|                     seasclick                     |   ✓   |   ✓   |
-|                      seaslog                      |        |   ✓   |
-|                       shmop                       |   ✓   |   ✓   |
-|  simdjson[*](#special-requirements-for-simdjson)  |   ✓   |   ✓   |
-|                     smbclient                     |   ✓   |   ✓   |
-|                      snappy                      |   ✓   |   ✓   |
-|                       snmp                       |   ✓   |   ✓   |
-|                   snuffleupagus                   |   ✓   |   ✓   |
-|                       soap                       |   ✓   |   ✓   |
-|                      sockets                      |   ✓   |   ✓   |
-|    sodium[*](#special-requirements-for-sodium)    |        |        |
-|                       solr                       |        |   ✓   |
-|                  sourceguardian                  |        |   ✓   |
-|                        spx                        |   ✓   |   ✓   |
-|    sqlsrv[*](#special-requirements-for-sqlsrv)    |   ✓   |   ✓   |
-|                       ssh2                       |   ✓   |   ✓   |
-|                       stomp                       |   ✓   |   ✓   |
-|                      swoole                      |   ✓   |   ✓   |
-|                     sybase_ct                     |        |        |
-|                       sync                       |   ✓   |   ✓   |
-|                      sysvmsg                      |   ✓   |   ✓   |
-|                      sysvsem                      |   ✓   |   ✓   |
-|                      sysvshm                      |   ✓   |   ✓   |
-|                      tensor                      |        |        |
-|                     tideways                     |   ✓   |   ✓   |
-|                       tidy                       |   ✓   |   ✓   |
-|                    timezonedb                    |   ✓   |   ✓   |
-|                       uopz                       |        |   ✓   |
-|                  uploadprogress                  |   ✓   |   ✓   |
-|                       uuid                       |   ✓   |   ✓   |
-|                        uv                        |   ✓   |   ✓   |
-|      vips[*](#special-requirements-for-vips)      |   ✓   |   ✓   |
-|                        vld                        |        |   ✓   |
-|                       wddx                       |        |        |
-| wikidiff2[*](#special-requirements-for-wikidiff2) |   ✓   |   ✓   |
-|                      xdebug                      |   ✓   |   ✓   |
-|                       xdiff                       |   ✓   |   ✓   |
-|                      xhprof                      |   ✓   |   ✓   |
-|                     xlswriter                     |   ✓   |   ✓   |
-|                      xmldiff                      |   ✓   |   ✓   |
-|                      xmlrpc                      |   ✓   |   ✓   |
-|     xpass[*](#special-requirements-for-xpass)     |   ✓   |   ✓   |
-|                        xsl                        |   ✓   |   ✓   |
-|                        yac                        |   ✓   |   ✓   |
-|                       yaml                       |   ✓   |   ✓   |
-|                        yar                        |   ✓   |   ✓   |
-|                   zephir_parser                   |   ✓   |   ✓   |
-|                        zip                        |   ✓   |   ✓   |
-|                        zmq                        |   ✓   |   ✓   |
-|                     zookeeper                     |        |        |
-|                       zstd                       |   ✓   |   ✓   |
-
+| Extension           | PHP 8.5 | PHP 8.4 | PHP 8.3 |
+|---------------------|---------|---------|---------|
+| amqp                |         | ✓       | ✓       |
+| apcu                | ✓       | ✓       | ✓       |
+| apcu_bc             |         |         |         |
+| ast                 | ✓       | ✓       | ✓       |
+| bcmath              | ✓       | ✓       | ✓       |
+| bitset              | ✓       | ✓       | ✓       |
+| blackfire           |         | ✓       | ✓       |
+| brotli              | ✓       | ✓       | ✓       |
+| bz2                 | ✓       | ✓       | ✓       |
+| calendar            | ✓       | ✓       | ✓       |
+| cassandra*          | ✓       | ✓       | ✓       |
+| cmark               |         |         |         |
+| csv                 | ✓       | ✓       | ✓       |
+| dba                 | ✓       | ✓       | ✓       |
+| ddtrace*            | ✓       | ✓       | ✓       |
+| decimal             | ✓       | ✓       | ✓       |
+| ds                  | ✓       | ✓       | ✓       |
+| ecma_intl*          |         |         | ✓       |
+| enchant             | ✓       | ✓       | ✓       |
+| ev                  | ✓       | ✓       | ✓       |
+| event               | ✓       | ✓       | ✓       |
+| excimer             | ✓       | ✓       | ✓       |
+| exif                | ✓       | ✓       | ✓       |
+| ffi                 | ✓       | ✓       | ✓       |
+| ftp                 | ✓       | ✓       | ✓       |
+| gd                  | ✓       | ✓       | ✓       |
+| gearman             |         | ✓       | ✓       |
+| geoip               |         |         |         |
+| geos*               |         | ✓       | ✓       |
+| geospatial          | ✓       | ✓       | ✓       |
+| gettext             | ✓       | ✓       | ✓       |
+| gmagick             |         | ✓       | ✓       |
+| gmp                 | ✓       | ✓       | ✓       |
+| gnupg               | ✓       | ✓       | ✓       |
+| grpc                |         | ✓       | ✓       |
+| http                | ✓       | ✓       | ✓       |
+| igbinary            | ✓       | ✓       | ✓       |
+| imagick             | ✓       | ✓       | ✓       |
+| imap                | ✓       | ✓       | ✓       |
+| inotify             | ✓       | ✓       | ✓       |
+| interbase           |         |         |         |
+| intl                | ✓       | ✓       | ✓       |
+| ion                 | ✓       | ✓       | ✓       |
+| ioncube_loader      |         | ✓       | ✓       |
+| ip2location         | ✓       | ✓       | ✓       |
+| jsmin               |         |         |         |
+| json_post           | ✓       | ✓       | ✓       |
+| jsonpath            | ✓       | ✓       | ✓       |
+| ldap                | ✓       | ✓       | ✓       |
+| luasandbox          |         | ✓       | ✓       |
+| lz4*                | ✓       | ✓       | ✓       |
+| lzf                 | ✓       | ✓       | ✓       |
+| mailparse           | ✓       | ✓       | ✓       |
+| maxminddb           | ✓       | ✓       | ✓       |
+| mcrypt              | ✓       | ✓       | ✓       |
+| md4c                | ✓       | ✓       | ✓       |
+| memcache            |         | ✓       |         |
+| memcached           | ✓       | ✓       | ✓       |
+| memprof*            | ✓       | ✓       | ✓       |
+| mongo               |         |         |         |
+| mongodb             | ✓       | ✓       | ✓       |
+| mosquitto           |         |         |         |
+| msgpack             | ✓       | ✓       | ✓       |
+| mssql               |         |         |         |
+| mysql               |         |         |         |
+| mysqli              | ✓       | ✓       | ✓       |
+| newrelic            |         | ✓       | ✓       |
+| nsq                 |         | ✓       | ✓       |
+| oauth               | ✓       | ✓       | ✓       |
+| oci8                | ✓       | ✓       | ✓       |
+| odbc                | ✓       | ✓       | ✓       |
+| opcache             | ✓       | ✓       | ✓       |
+| opencensus          |         |         | ✓       |
+| openswoole          |         | ✓       | ✓       |
+| opentelemetry       | ✓       | ✓       | ✓       |
+| operator            | ✓       | ✓       | ✓       |
+| parallel*           | ✓       | ✓       | ✓       |
+| parle*              |         | ✓       | ✓       |
+| pcntl               | ✓       | ✓       | ✓       |
+| pcov                | ✓       | ✓       | ✓       |
+| pdo_dblib           | ✓       | ✓       | ✓       |
+| pdo_firebird*       | ✓       | ✓       | ✓       |
+| pdo_mysql           | ✓       | ✓       | ✓       |
+| pdo_oci             |         | ✓       |         |
+| pdo_odbc            | ✓       | ✓       | ✓       |
+| pdo_pgsql           | ✓       | ✓       | ✓       |
+| pdo_sqlsrv*         |         | ✓       |         |
+| pgsql               | ✓       | ✓       | ✓       |
+| phalcon             |         | ✓       | ✓       |
+| php_trie            |         | ✓       | ✓       |
+| phpy*               | ✓       | ✓       | ✓       |
+| pkcs11              | ✓       | ✓       | ✓       |
+| pq                  | ✓       | ✓       | ✓       |
+| propro              |         |         |         |
+| protobuf            | ✓       | ✓       | ✓       |
+| pspell              | ✓       | ✓       | ✓       |
+| psr                 | ✓       | ✓       | ✓       |
+| pthreads*           |         |         |         |
+| raphf               | ✓       | ✓       | ✓       |
+| rdkafka             | ✓       | ✓       | ✓       |
+| recode              |         |         |         |
+| redis               | ✓       | ✓       | ✓       |
+| relay               | ✓       | ✓       | ✓       |
+| saxon*              | ✓       | ✓       | ✓       |
+| seasclick           | ✓       | ✓       | ✓       |
+| seaslog             |         |         | ✓       |
+| shmop               | ✓       | ✓       | ✓       |
+| simdjson*           | ✓       | ✓       | ✓       |
+| smbclient           | ✓       | ✓       | ✓       |
+| snappy              | ✓       | ✓       | ✓       |
+| snmp                | ✓       | ✓       | ✓       |
+| snuffleupagus       |         | ✓       | ✓       |
+| soap                | ✓       | ✓       | ✓       |
+| sockets             | ✓       | ✓       | ✓       |
+| sodium*             |         | ✓       |         |
+| solr                | ✓       | ✓       | ✓       |
+| sourceguardian      |         | ✓       | ✓       |
+| spx                 | ✓       | ✓       | ✓       |
+| sqlsrv*             | ✓       | ✓       |         |
+| ssh2                | ✓       | ✓       | ✓       |
+| stomp               |         | ✓       | ✓       |
+| swoole              | ✓       | ✓       |         |
+| sybase_ct           |         |         |         |
+| sync                |         | ✓       | ✓       |
+| sysvmsg             | ✓       | ✓       | ✓       |
+| sysvsem             | ✓       | ✓       | ✓       |
+| sysvshm             | ✓       | ✓       | ✓       |
+| tensor              |         |         |         |
+| tideways            |         | ✓       | ✓       |
+| tidy                | ✓       | ✓       | ✓       |
+| timezonedb          | ✓       | ✓       | ✓       |
+| translit            | ✓       | ✓       | ✓       |
+| uopz                |         |         | ✓       |
+| uploadprogress      | ✓       | ✓       | ✓       |
+| uuid                | ✓       | ✓       | ✓       |
+| uv                  | ✓       | ✓       | ✓       |
+| vips*               | ✓       | ✓       | ✓       |
+| vld                 | ✓       | ✓       | ✓       |
+| wddx                |         |         |         |
+| wikidiff2*          | ✓       | ✓       | ✓       |
+| xattr               | ✓       | ✓       | ✓       |
+| xdebug              |         | ✓       | ✓       |
+| xdiff               | ✓       | ✓       | ✓       |
+| xhprof              | ✓       | ✓       | ✓       |
+| xlswriter           | ✓       | ✓       | ✓       |
+| xmldiff             |         | ✓       | ✓       |
 
 > This extension is from https://github.com/mlocati/docker-php-extension-installer, see the example file for reference
 
